@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 
 import './PluggedIn.css';
 import Header from "./Header";
+import Search from "./Search";
 
 export default class PluggedIn extends React.Component {
     render() {
@@ -16,6 +17,8 @@ export default class PluggedIn extends React.Component {
                     <div className="jumbotron">
                         <h1 className="display-4">Welcome to PluggedIn!</h1>
                         <p className="lead">A resource for artists and tour managers to find venues</p>
+
+                        <Search></Search>
 
                     </div>
                 </div>
