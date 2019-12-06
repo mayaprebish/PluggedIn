@@ -2,3 +2,33 @@
     color: black;
 }
 
+.login-form {
+    margin-top: 40px;
+}
+
+.register-form {
+    margin-top: 40px;
+}
+
+.search-container {
+    margin-top: 40px;
+}
+
+.profile-container {
+    margin-top: 40px;
+}
+
+.login-btn {
+    text-decoration: none;
+    color: white;
+}
+
+.login-btn:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.user-select {
+    height: 50px;
+    margin-bottom: 20px;
+}

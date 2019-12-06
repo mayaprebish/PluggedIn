@@ -4,8 +4,20 @@ import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import './PluggedIn.css';
 import Header from "./Header";
 import Search from "./Search";
+import Login from "./Login";
+import Index from "./Index";
+import Register from "./Register";
+import Profile from "./Profile";
 
 export default class PluggedIn extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            user: ''
+        }
+    }
+
     render() {
         return (
             <Router>
@@ -14,12 +26,12 @@ export default class PluggedIn extends React.Component {
                         <Header/>
                     </div>
 
-                    <div className="jumbotron">
-                        <h1 className="display-4">Welcome to PluggedIn!</h1>
-                        <p className="lead">A resource for artists and tour managers to find venues</p>
-
-                        <Search></Search>
-
+                    <div className="content">
+                        <Route exact path="/" component={Index}/>
+                        <Route path="/login" component={Login}/>
+                        <Route path="/register" component={Register}/>
+                        <Route path="/profile" component={Profile}/>
+                        <Route path="/search" component={Search}/>
                     </div>
                 </div>
             </Router>
