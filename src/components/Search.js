@@ -1,36 +1,33 @@
 import React, {Component} from 'react';
+import VenueService from "../services/VenueService";
+import SearchList from "./SearchList";
 
 export default class Search extends Component {
+    venueService = VenueService.getInstance();
+
     constructor(props) {
         super(props);
         this.state = {
-            venues: null,
-            venue: ""
+            venues: '',
+            venue: ''
         }
     }
 
-    componentDidMount() {
-        console.log(this.state.venues);
-        this.searchVenues()
-            .then(response => {
+    searchVenues() {
+        this.venueService.findVenues()
+            .then(response => response.json())
+            .then(items => {
                 this.setState({
-                    venues: response.items
-                })
+                    venues: items.venues.venue
+                });
+                console.log(this.state.venues);
             });
-        console.log(this.state.venues);
     }
 
-    searchVenues = () =>
-        fetch(`https://eventful.com/json/venues/search?app_key=4TTVttfmr3tXFDJr&location=boston`, {
-                method: 'GET',
-                headers: {
-                    'content-type': 'application/json',
-                    'Accept': 'application/json',
-                    'Access-Control-Allow-Credentials': true,
-                    'Access-Control-Allow-Origin': true
-                }
-            })
-            .then(response => response.json());
+    componentDidMount() {
+        this.searchVenues();
+        console.log(this.state.venues);
+    }
 
     render() {
         return (
@@ -39,14 +36,15 @@ export default class Search extends Component {
                 <div className="input-group mb-3">
                     <input type="text" className="form-control" placeholder="Search by location or keyword"
                            aria-label="Recipient's username" aria-describedby="button-addon2"/>
-                        <div className="input-group-append">
-                            <button className="btn btn-outline-secondary" type="button" id="button-addon2">SEARCH
-                            </button>
-                        </div>
+                    <div className="input-group-append">
+                        <button className="btn btn-outline-secondary" type="button" id="button-addon2"
+                                onClick={() => this.searchVenues()}>SEARCH
+                        </button>
+                    </div>
                 </div>
 
-                {this.state.venues && this.state.venues.map(venue =>
-                    <h6>{venue.venue_name}</h6>)}
+                <SearchList venues={this.state && this.state.venues && this.state.venues}/>
+
             </div>
         )
     }
