@@ -46,7 +46,6 @@ export default class Search extends Component {
             this.setState({
               venue: venue
             })
-            this.props.selectVenue(venue);
         });
 
 
