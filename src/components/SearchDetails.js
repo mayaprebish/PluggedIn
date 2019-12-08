@@ -6,9 +6,9 @@ export default class SearchDetails extends React.Component {
     }
 
     render() {
-        return(
+        return (
             <div>
-                {this.props.venue.name != '' &&
+                {this.props.venue.name !== '' &&
 
                 // console.log(this.props.venue) &&
                 <div className="container wbdv-details">
@@ -20,7 +20,11 @@ export default class SearchDetails extends React.Component {
                     <h6>{this.props.venue.country}</h6>
                 </div>
                 }
-              </div>
+                {this.props.loggedIn === true && this.props.userType === "Tour Manager" &&
+                this.props.venue.name !== '' &&
+                <button>Add Venue to Favorites</button>
+                }
+            </div>
 
         )
     }

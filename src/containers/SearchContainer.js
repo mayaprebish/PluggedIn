@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
 import UserService from "../services/UserService";
-import Search from "../components";
+import Search from "../components/Search.js";
 
 const userService = UserService.getInstance();
 
@@ -11,12 +11,20 @@ const stateToPropertyMapper = (state) => {
         firstName: state.firstName,
         lastName: state.lastName,
         userType: state.userType,
-        user: state.user
+        user: state.user,
+        venue: state.venue
     }
 };
 
 const dispatcherToPropertyMapper = dispatch => {
-    return {}
+    return {
+        selectVenue: (venue) => {
+            dispatch({
+                type: 'SELECT_VENUE',
+                venue: venue
+            })
+        },
+    }
 };
 
 const SearchContainer =

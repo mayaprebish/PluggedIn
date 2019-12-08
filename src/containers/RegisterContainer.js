@@ -17,11 +17,6 @@ const stateToPropertyMapper = (state) => {
 
 const dispatcherToPropertyMapper = dispatch => {
         return {
-            load: () => {
-                dispatch({
-                    type: 'LOAD'
-                })
-            },
             changeUsername: (username) => {
                 dispatch({
                     type: 'CHANGE_USERNAME',

@@ -69,11 +69,11 @@ export default class Register extends React.Component {
                     <Link to="/profile" className="login-btn">
                         <button type="submit" className="btn btn-primary"
                         onClick={() => {
-                            this.props.register(this.state.username,
+                            this.props.register(this.state.userType,
                                 this.state.password,
                                 this.state.firstName,
                                 this.state.lastName,
-                                this.state.userType)
+                                this.state.username)
                         }}>
                             Sign up
                         </button>

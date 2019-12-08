@@ -1,17 +1,12 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
-
 import './PluggedIn.css';
 import Header from "./Header";
-import Search from "./Search";
-import Login from "./Login";
-import Index from "./Index";
-import Register from "./Register";
-import Profile from "./Profile";
 
 import {createStore} from 'redux'
 import {Provider} from 'react-redux'
 import LoginReducer from "../reducers/LoginReducer";
+
 import LoginContainer from "../containers/LoginContainer";
 import RegisterContainer from "../containers/RegisterContainer";
 import ProfileContainer from "../containers/ProfileContainer";
