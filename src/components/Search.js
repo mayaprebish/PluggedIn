@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import VenueService from "../services/VenueService";
 import SearchList from "./SearchList";
+import SearchDetails from "./SearchDetails";
 
 export default class Search extends Component {
     venueService = VenueService.getInstance();
@@ -9,9 +10,16 @@ export default class Search extends Component {
         super(props);
         this.state = {
             venues: '',
-            venue: '',
+            venue: {
+              name: ''
+            },
             searchTitle: 'magnolia'
         }
+    }
+
+    componentDidMount() {
+        this.searchVenues();
+        console.log(this.state.venues);
     }
 
     searchVenues() {
@@ -29,12 +37,17 @@ export default class Search extends Component {
         this.setState({
             searchTitle: event.target.value
         })
-    
 
-    componentDidMount() {
-        this.searchVenues();
-        console.log(this.state.venues);
-    }
+
+    selectVenue = venueId =>
+        this.venueService.getVenue(venueId)
+        .then(response => response.json())
+        .then(venue =>
+            this.setState({
+              venue: venue
+            }))
+
+
 
     render() {
         return (
@@ -54,7 +67,19 @@ export default class Search extends Component {
                     </div>
                 </div>
 
-                <SearchList venues={this.state && this.state.venues && this.state.venues}/>
+                <div className="row">
+                  <div className="col-6 wbdv-venue-list">
+                    <SearchList
+                    venues={this.state && this.state.venues && this.state.venues}
+                    selectVenue={this.selectVenue}/>
+                  </div>
+
+                  <div className='col-6 wbdv-venue-details'>
+                    <SearchDetails venue={this.state.venue}/>
+                  </div>
+                </div>
+
+
 
             </div>
         )

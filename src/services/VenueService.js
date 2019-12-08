@@ -12,7 +12,7 @@ export default class VenueService {
 
     findVenues(searchPhrase) {
       console.log(searchPhrase)
-        return fetch(this.url + `/${searchPhrase}`, {
+        return fetch(this.url + "/search" + `/${searchPhrase}`, {
             method: 'GET',
             headers: {
                 'content-type': 'application/json',
@@ -22,12 +22,20 @@ export default class VenueService {
                 'Access-Control-Allow-Headers': '*'
             }
         })
+    }
 
-            // .then(response => response.json())
-            // .catch(err => {
-            //     console.log(err)
-            //     console.log("didn't work")
-            // })
+    getVenue(venueId) {
+      console.log(venueId)
+      return fetch(this.url + `/${venueId}`, {
+        method: 'GET',
+        headers: {
+            'content-type': 'application/json',
+            'Accept': 'application/json',
+            'Access-Control-Allow-Credentials': '*',
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Headers': '*'
+        }
+      })
     }
 
 }

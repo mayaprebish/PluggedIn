@@ -9,7 +9,7 @@ export default class SearchList extends React.Component {
         return(
             <div>
                 {this.props.venues && this.props.venues.length > 0 && this.props.venues.map(venue =>
-                    <p>{venue.venue_name}</p>
+                    <p onClick={() => this.props.selectVenue(venue.id)}>{venue.venue_name}</p>
                 )}
             </div>
         )
