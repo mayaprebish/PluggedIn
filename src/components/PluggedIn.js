@@ -9,6 +9,17 @@ import Index from "./Index";
 import Register from "./Register";
 import Profile from "./Profile";
 
+import {createStore} from 'redux'
+import {Provider} from 'react-redux'
+import LoginReducer from "../reducers/LoginReducer";
+import LoginContainer from "../containers/LoginContainer";
+import RegisterContainer from "../containers/RegisterContainer";
+import ProfileContainer from "../containers/ProfileContainer";
+import IndexContainer from "../containers/IndexContainer";
+import SearchContainer from "../containers/SearchContainer";
+
+const loginStore = createStore(LoginReducer);
+
 export default class PluggedIn extends React.Component {
 
     constructor(props) {
@@ -26,13 +37,15 @@ export default class PluggedIn extends React.Component {
                         <Header/>
                     </div>
 
-                    <div className="content">
-                        <Route exact path="/" component={Index}/>
-                        <Route path="/login" component={Login}/>
-                        <Route path="/register" component={Register}/>
-                        <Route path="/profile" component={Profile}/>
-                        <Route path="/search" component={Search}/>
-                    </div>
+                    <Provider store={loginStore}>
+                        <div className="content">
+                            <Route exact path="/" component={IndexContainer}/>
+                            <Route path="/login" component={LoginContainer}/>
+                            <Route path="/register" component={RegisterContainer}/>
+                            <Route path="/profile" component={ProfileContainer}/>
+                            <Route path="/search" component={SearchContainer}/>
+                        </div>
+                    </Provider>
                 </div>
             </Router>
         )

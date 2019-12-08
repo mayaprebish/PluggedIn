@@ -2,22 +2,12 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 import './PluggedIn.css';
-import UserService from "../services/UserService";
 
 export default class Login extends React.Component {
-    userService = UserService.getInstance();
-
     constructor(props) {
         super(props);
-        this.state = {
-            username: '',
-            password: ''
-        }
+        this.state = {}
     }
-
-    getUser() {
-        //this.userService.findUserByCredentials(this.state.username, this.state.password);
-    };
 
     render() {
         return (
@@ -29,9 +19,7 @@ export default class Login extends React.Component {
                                placeholder="username"
                                aria-describedby="username"
                                onChange={e => {
-                                   this.setState({
-                                       username: e.currentTarget.value
-                                   })
+                                   this.props.changeUsername(e.currentTarget.value);
                                }}/>
                     </div>
                     <div className="form-group">
@@ -39,14 +27,12 @@ export default class Login extends React.Component {
                         <input type="password" className="form-control" id="password"
                                placeholder="****"
                                onChange={e => {
-                                   this.setState({
-                                       password: e.currentTarget.value
-                                   })
+                                   this.props.changePassword(e.currentTarget.value);
                                }}/>
                     </div>
                     <Link to="/profile" className="login-btn">
                         <button type="submit" className="btn btn-primary"
-                                onClick={() => this.getUser()}>
+                                onClick={() => this.props.login(this.state.username, this.state.password)}>
                             Log In
                         </button>
                     </Link>

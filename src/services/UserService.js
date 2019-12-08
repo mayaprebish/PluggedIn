@@ -10,15 +10,8 @@ export default class UserService {
         return this.instance;
     }
 
-    addNewUser = (username, password, type) => {
-        /*
-        If type is manager, add new manager to server
-        If type is owner, add new owner
-         */
-    };
-
-    findUserByCredentials = (username, password) => {
-        return fetch(this.url + username + "/" + password, {
+    login = (username, password, userType) => {
+        return fetch(this.url + username + '/' + password + '/' + userType, {
             method: 'GET',
             headers: {
                 'content-type':'application/json',
@@ -28,13 +21,29 @@ export default class UserService {
             }
         })
             .then(response => response.json())
-            .catch(err => {
-                console.log(err)
-            })
-            .then(user => {
-                this.state.user = user;
-            })
-    }
+            .catch(err => console.log(err));
+    };
+
+    register = (username, password, firstName, lastName, userType) => {
+        return fetch('http://localhost:8080/api/user', {
+            method: 'POST',
+            headers: {
+                'content-type':'application/json',
+                'Accept': 'application/json',
+                'Access-Control-Allow-Credentials':true,
+                'Access-Control-Allow-Origin':true
+            },
+            body: {
+                username: username,
+                password: password,
+                firstName: firstName,
+                lastName: lastName,
+                userType: userType
+            }
+        })
+            .then(response => response.json())
+            .catch(err => console.log(err));
+    };
 
     findAllManagers() {
         return fetch(this.url + 'managers', {

@@ -4,33 +4,26 @@ import './PluggedIn.css';
 import UserService from "../services/UserService";
 
 export default class Profile extends React.Component {
-    userService = UserService.getInstance();
-
     constructor(props) {
         super(props);
-        this.state = {
-            username: '',
-            password: '',
-            user: '',
-            firstName: '',
-            lastName: ''
-        }
+        this.state = {}
     }
 
     componentDidMount() {
         this.loadProfile();
+        console.log(this.state);
     }
 
     loadProfile() {
-
+        this.props.load();
     }
 
     render() {
         return (
             <div className="container profile-container">
                 <h4>Personal Info:</h4>
-                <p>Username: admin</p>
-                <p>Password: maya</p>
+                <p>Username: {this.state.username}</p>
+                <p>Password: {this.state.password}</p>
                 <p>Location: Boston, MA</p>
 
                 <h4>Manager Info:</h4>
