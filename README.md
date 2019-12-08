@@ -1,68 +1,23 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Problem: Smaller artists have trouble connecting with successful producers.
+User 1:  Tour Manager
+•	Finding and booking venues
+•	Contact artists
+•	Pushing out produced tracks
+User 2: Artist
+•	Keeping track of the venues they’ve played at
+•	Contact producers
+•	Getting music discovered
+User 3: Venue Owner
+•	Choose the venue(s) that they own
+•	Do not have to worry about adding bookings made through the site to their page
+•	
+User 4: Anonymous User
+•	Can only search for venues
+•	Can access who has played at a venue recently
+•	Can access the venues an artist has played at
+•	Upon clicking on a venue an artist has played at the process repeats
+Strategy: PluggedIn is a web application used to connect producers with independent artists who use Youtube as their primary content platform. The site has two types of users: Producers, whose profiles contain information about their production company, signed artists, genre, location and contact information, and artists, whose profiles contain info about their Youtube channel, genre, location, and contact info. When artists search the site for producers, they will have access to information about the producers on the site, which can be filtered by genre or location. On the producer side, producers can search either from the users on the site, or from all artists on Youtube.
+API: YouTube Data
+YouTube Data API allows you to add YouTube functionality to your site and search for content:
+•	The API allows you can add a variety of YouTube features to your application. The features include: uploading videos, managing playlists and subscriptions, updating channel settings, etc.
+•	Use the API to search for videos matching specific search terms, topics, locations, publication dates, and much more. The APIs search.list method also supports searches for playlists and channels.
