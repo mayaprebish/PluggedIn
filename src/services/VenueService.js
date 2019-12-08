@@ -1,5 +1,5 @@
 export default class VenueService {
-    url = 'https://api.eventful.com/json/venues?app_key=4TTVttfmr3tXFDJr&location=boston';
+    url = 'http://localhost:8080/api/venues';
     static instance = null;
 
     static getInstance() {
@@ -10,8 +10,9 @@ export default class VenueService {
         return this.instance;
     }
 
-    findVenues() {
-        return fetch(this.url, {
+    findVenues(searchPhrase) {
+      console.log(searchPhrase)
+        return fetch(this.url + `/${searchPhrase}`, {
             method: 'GET',
             headers: {
                 'content-type': 'application/json',
@@ -21,6 +22,7 @@ export default class VenueService {
                 'Access-Control-Allow-Headers': '*'
             }
         })
+
             // .then(response => response.json())
             // .catch(err => {
             //     console.log(err)

@@ -9,12 +9,13 @@ export default class Search extends Component {
         super(props);
         this.state = {
             venues: '',
-            venue: ''
+            venue: '',
+            searchTitle: 'magnolia'
         }
     }
 
     searchVenues() {
-        this.venueService.findVenues()
+        this.venueService.findVenues(this.state.searchTitle)
             .then(response => response.json())
             .then(items => {
                 this.setState({
@@ -23,6 +24,12 @@ export default class Search extends Component {
                 console.log(this.state.venues);
             });
     }
+
+    searchTitleChanged = event =>
+        this.setState({
+            searchTitle: event.target.value
+        })
+    
 
     componentDidMount() {
         this.searchVenues();
@@ -34,7 +41,11 @@ export default class Search extends Component {
             <div className="container search-container">
                 <h2>Search for Venues</h2>
                 <div className="input-group mb-3">
-                    <input type="text" className="form-control" placeholder="Search by location or keyword"
+                    <input onChange={this.searchTitleChanged}
+                          value={this.state.searchTitle}
+                          type="text"
+                          className="form-control"
+                          placeholder="Search by location or keyword"
                            aria-label="Recipient's username" aria-describedby="button-addon2"/>
                     <div className="input-group-append">
                         <button className="btn btn-outline-secondary" type="button" id="button-addon2"
