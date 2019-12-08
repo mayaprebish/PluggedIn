@@ -10,12 +10,7 @@ export default class Profile extends React.Component {
     }
 
     componentDidMount() {
-        this.loadProfile();
         console.log(this.state);
-    }
-
-    loadProfile() {
-        this.props.load();
     }
 
     render() {

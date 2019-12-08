@@ -36,16 +36,18 @@ export default class Search extends Component {
     searchTitleChanged = event =>
         this.setState({
             searchTitle: event.target.value
-        })
+        });
 
 
     selectVenue = venueId =>
         this.venueService.getVenue(venueId)
         .then(response => response.json())
-        .then(venue =>
+        .then(venue => {
             this.setState({
               venue: venue
-            }))
+            })
+            this.props.selectVenue(venue);
+        });
 
 
 
@@ -75,7 +77,7 @@ export default class Search extends Component {
                   </div>
 
                   <div className='col-6 wbdv-venue-details'>
-                    <SearchDetails venue={this.state.venue}/>
+                    <SearchDetails venue={this.state.venue} loggedIn={this.state.loggedIn} user={this.state.userType}/>
                   </div>
                 </div>
 
