@@ -12,7 +12,7 @@
 *	Can only search for venues
 *	Can access who has played at a venue recently
 *	Can access the venues an artist has played at
-*	Upon clicking on a venue an artist has played at the process repeats
+*	Upon clicking on a venue an artist has played at, the process repeats
 ### Strategy: 
 PluggedIn is a web application used to connect producers with independent artists who use Evenful as their primary venue searching platform. The site has 3 types of users: 
 * Venue Owners: their profile contain information about their venue
