@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
 import UserService from "../services/UserService";
-import Search from "../components";
+import Search from "../components/Search";
 
 const userService = UserService.getInstance();
 
