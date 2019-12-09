@@ -11,7 +11,8 @@ const stateToPropertyMapper = (state) => {
         firstName: state.firstName,
         lastName: state.lastName,
         userType: state.userType,
-        user: state.user
+        user: state.user,
+        venue: state.venue
     }
 };
 
@@ -42,7 +43,6 @@ const dispatcherToPropertyMapper = dispatch => {
                 })
             },
             changeUserType: (userType) => {
-                console.log(userType);
                 dispatch({
                     type: 'CHANGE_USER_TYPE',
                     userType: userType
