@@ -11,7 +11,7 @@ export default class UserService {
     }
 
     login = (username, password, userType) => {
-        return fetch(this.url + username + '/' + password + '/' + userType, {
+        return fetch(this.url + '/' + `${username}` + '/' + `${password}` + '/' + `${userType}`, {
             method: 'GET',
             headers: {
                 'content-type':'application/json',
@@ -22,7 +22,7 @@ export default class UserService {
         })
             .then(response => response.json())
             .catch(err => console.log(err));
-    };
+    }
 
     register = (username, password, firstName, lastName, userType) => {
         return fetch('http://localhost:8080/api/user', {
