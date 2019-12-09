@@ -29,7 +29,7 @@ export default class SearchDetails extends React.Component {
                 }
                 {this.props.venue.name !== '' && this.props.loggedIn === true && this.props.userType === 'Venue Owner' &&
 
-                <button>Add Venue to Owned</button>
+                <button>This is my Venue</button>
                 }
             </div>
 
