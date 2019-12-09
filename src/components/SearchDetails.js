@@ -3,6 +3,8 @@ import React from 'react';
 export default class SearchDetails extends React.Component {
     constructor(props) {
         super(props);
+        console.log("IN SEARCH DETAILS PROPS ")
+        console.log(props);
     }
 
     render() {
@@ -19,10 +21,15 @@ export default class SearchDetails extends React.Component {
                     <h6>{this.props.venue.region}</h6>
                     <h6>{this.props.venue.country}</h6>
                 </div>
+
                 }
-                {this.props.loggedIn === true && this.props.userType === "Tour Manager" &&
-                this.props.venue.name !== '' &&
+                {this.props.venue.name !== '' && this.props.loggedIn === true && this.props.userType === 'Tour Manager' &&
+
                 <button>Add Venue to Favorites</button>
+                }
+                {this.props.venue.name !== '' && this.props.loggedIn === true && this.props.userType === 'Venue Owner' &&
+
+                <button>Add Venue to Owned</button>
                 }
             </div>
 

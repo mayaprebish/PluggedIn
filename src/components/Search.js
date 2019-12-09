@@ -8,6 +8,11 @@ export default class Search extends Component {
 
     constructor(props) {
         super(props);
+        console.log("IN SEARCH COMPONENT PROPS")
+        console.log(props)
+
+        console.log("USER")
+        console.log(this.props.user)
         this.state = {
             venues: '',
             venue: {
@@ -19,7 +24,6 @@ export default class Search extends Component {
 
     componentDidMount() {
         this.searchVenues();
-        console.log(this.state.venues);
     }
 
     searchVenues() {
@@ -76,7 +80,7 @@ export default class Search extends Component {
                   </div>
 
                   <div className='col-6 wbdv-venue-details'>
-                    <SearchDetails venue={this.state.venue} loggedIn={this.state.loggedIn} user={this.state.userType}/>
+                    <SearchDetails venue={this.state.venue} loggedIn={this.props.loggedIn} userType={this.props.userType}/>
                   </div>
                 </div>
 

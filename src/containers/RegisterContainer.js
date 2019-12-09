@@ -12,7 +12,8 @@ const stateToPropertyMapper = (state) => {
         lastName: state.lastName,
         userType: state.userType,
         user: state.user,
-        venue: state.venue
+        venue: state.venue,
+        loggedIn: state.loggedIn
     }
 };
 

@@ -1,11 +1,11 @@
 const initialState = {
     username: '',
     password: '',
-    userType: 'Venue Owner',
+    userType: '',
     firstName: '',
     lastName: '',
     loggedIn: false,
-    user: [],
+    user: '',
     venue: ''
 };
 
@@ -78,20 +78,17 @@ const LoginReducer = (state = initialState, action) => {
                 venue: state.venue
             };
         case 'LOGIN':
-          alert("IN LOGIN IN REDUCER");
-            console.log(action.user);
             return {
                 user: action.user,
                 loggedIn: true,
-                username: state.username,
-                password: state.password,
-                firstName: state.firstName,
-                lastName: state.lastName,
-                userType: state.userType,
-                venue: state.venue
+                username: action.user.username,
+                password: action.user.password,
+                firstName: action.user.firstName,
+                lastName: action.user.lastName,
+                userType: action.user.userType,
+                venue: action.user.venue
             };
         case 'REGISTER':
-            console.log(action.user);
             return {
                 user: action.user,
                 loggedIn: true,

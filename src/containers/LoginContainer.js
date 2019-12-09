@@ -10,7 +10,10 @@ const stateToPropertyMapper = (state) => {
         password: state.password,
         userType: state.userType,
         user: state.user,
-        venue: state.venue
+        venue: state.venue,
+        firstName: state.firstName,
+        lastName: state.lastName,
+        loggedIn: state.loggedIn
     }
 };
 
@@ -29,6 +32,7 @@ const dispatcherToPropertyMapper = dispatch => ({
             },
             login: (username, password, userType) => {
                 console.log("logging in");
+                console.log(userType)
 
                 userService
                     .login(username, password, userType)
@@ -36,6 +40,8 @@ const dispatcherToPropertyMapper = dispatch => ({
                         if (user == null) {
                             console.log("user not found");
                         } else {
+                          console.log("USER IN LOGIN IN LOGIN CONTAIN")
+                            console.log(user)
                             dispatch({
                                 type: 'LOGIN',
                                 user: user
