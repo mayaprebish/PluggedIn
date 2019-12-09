@@ -8,12 +8,13 @@ const stateToPropertyMapper = (state) => {
     return {
         username: state.username,
         password: state.password,
-        user: state.user
+        userType: state.userType,
+        user: state.user,
+        venue: state.venue
     }
 };
 
-const dispatcherToPropertyMapper = dispatch => {
-        return {
+const dispatcherToPropertyMapper = dispatch => ({
             changeUsername: (username) => {
                 dispatch({
                     type: 'CHANGE_USERNAME',
@@ -26,13 +27,12 @@ const dispatcherToPropertyMapper = dispatch => {
                     password: password
                 })
             },
-            login: (username, password) => {
+            login: (username, password, userType) => {
                 console.log("logging in");
+
                 userService
-                    .login(username, password)
+                    .login(username, password, userType)
                     .then(user => {
-                        console.log("found user");
-                        console.log(user);
                         if (user == null) {
                             console.log("user not found");
                         } else {
@@ -43,9 +43,8 @@ const dispatcherToPropertyMapper = dispatch => {
                         }
                     })
             }
-        }
-    }
-;
+
+    })
 
 const LoginContainer =
     connect(stateToPropertyMapper,

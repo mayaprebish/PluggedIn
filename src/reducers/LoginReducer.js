@@ -1,9 +1,9 @@
 const initialState = {
     username: '',
     password: '',
+    userType: 'Venue Owner',
     firstName: '',
     lastName: '',
-    userType: 'Tour Manager',
     loggedIn: false,
     user: [],
     venue: ''
@@ -30,7 +30,8 @@ const LoginReducer = (state = initialState, action) => {
                 password: state.password,
                 firstName: state.firstName,
                 lastName: state.lastName,
-                userType: state.userType
+                userType: state.userType,
+                venue: state.venue
             };
         case 'CHANGE_PASSWORD':
             return {
@@ -40,7 +41,8 @@ const LoginReducer = (state = initialState, action) => {
                 password: action.password,
                 firstName: state.firstName,
                 lastName: state.lastName,
-                userType: state.userType
+                userType: state.userType,
+                venue: state.venue
             };
         case 'CHANGE_FIRST_NAME':
             return {
@@ -50,7 +52,8 @@ const LoginReducer = (state = initialState, action) => {
                 password: state.password,
                 firstName: action.firstName,
                 lastName: state.lastName,
-                userType: state.userType
+                userType: state.userType,
+                venue: state.venue
             };
         case 'CHANGE_LAST_NAME':
             return {
@@ -60,7 +63,8 @@ const LoginReducer = (state = initialState, action) => {
                 password: state.password,
                 firstName: state.firstName,
                 lastName: action.lastName,
-                userType: state.userType
+                userType: state.userType,
+                venue: state.venue
             };
         case 'CHANGE_USER_TYPE':
             return {
@@ -70,9 +74,11 @@ const LoginReducer = (state = initialState, action) => {
                 password: state.password,
                 firstName: state.firstName,
                 lastName: state.lastName,
-                userType: action.userType
+                userType: action.userType,
+                venue: state.venue
             };
         case 'LOGIN':
+          alert("IN LOGIN IN REDUCER");
             console.log(action.user);
             return {
                 user: action.user,
@@ -82,6 +88,7 @@ const LoginReducer = (state = initialState, action) => {
                 firstName: state.firstName,
                 lastName: state.lastName,
                 userType: state.userType,
+                venue: state.venue
             };
         case 'REGISTER':
             console.log(action.user);
@@ -93,6 +100,7 @@ const LoginReducer = (state = initialState, action) => {
                 firstName: state.firstName,
                 lastName: state.lastName,
                 userType: state.userType,
+                venue: state.venue
             };
         default:
             return state;
