@@ -3,8 +3,7 @@ import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 
 import './PluggedIn.css';
 
-export default class Header extends React.Component {
-
+export default class LoggedOutHeader extends React.Component {
     render() {
         return (
             <div>

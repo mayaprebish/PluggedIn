@@ -11,6 +11,17 @@ const initialState = {
 
 const LoginReducer = (state = initialState, action) => {
     switch (action.type) {
+        case 'USER_LOADED':
+            return {
+                user: state.user,
+                loggedIn: true,
+                username: state.username,
+                password: state.password,
+                firstName: state.firstName,
+                lastName: state.lastName,
+                userType: state.userType,
+                venue: state.venue
+            };
         case 'LOGOUT':
             return {
                 user: '',
@@ -91,18 +102,18 @@ const LoginReducer = (state = initialState, action) => {
         case 'LOGIN':
             return {
                 user: action.user,
-                loggedIn: true,
+                loggedIn: state.loggedIn,
                 username: action.user.username,
                 password: action.user.password,
                 firstName: action.user.firstName,
                 lastName: action.user.lastName,
                 userType: action.user.userType,
-                venue: action.user.venue
+                venue: state.venue
             };
         case 'REGISTER':
             return {
                 user: action.user,
-                loggedIn: true,
+                loggedIn: state.loggedIn,
                 username: action.user.username,
                 password: action.user.password,
                 firstName: action.user.firstName,

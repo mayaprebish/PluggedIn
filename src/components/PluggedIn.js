@@ -1,7 +1,7 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import './PluggedIn.css';
-import Header from "./Header";
+import Header from "./LoggedOutHeader";
 
 import {createStore} from 'redux'
 import {Provider} from 'react-redux'
@@ -28,10 +28,6 @@ export default class PluggedIn extends React.Component {
         return (
             <Router>
                 <div className="content">
-                    <div className="header">
-                        <Header/>
-                    </div>
-
                     <Provider store={loginStore}>
                         <div className="content">
                             <Route exact path="/" component={IndexContainer}/>

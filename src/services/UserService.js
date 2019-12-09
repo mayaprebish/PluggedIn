@@ -14,10 +14,10 @@ export default class UserService {
         return fetch(this.url + '/' + `${username}` + '/' + `${password}`, {
             method: 'GET',
             headers: {
-                'content-type':'application/json',
+                'content-type': 'application/json',
                 'Accept': 'application/json',
-                'Access-Control-Allow-Credentials':true,
-                'Access-Control-Allow-Origin':true
+                'Access-Control-Allow-Credentials': true,
+                'Access-Control-Allow-Origin': true
             }
         })
             .then(response => response.json())
@@ -32,13 +32,13 @@ export default class UserService {
         if (userType === "Venue Owner") {
             utype = "owner"
         }
-        return fetch('http://localhost:8080/api/users/' + utype, {
+        return fetch(this.url + utype, {
             method: 'POST',
             headers: {
-                'content-type':'application/json',
+                'content-type': 'application/json',
                 'Accept': 'application/json',
-                'Access-Control-Allow-Credentials':true,
-                'Access-Control-Allow-Origin':true
+                'Access-Control-Allow-Credentials': true,
+                'Access-Control-Allow-Origin': true
             },
             body: JSON.stringify({
                 username: username,
@@ -55,10 +55,10 @@ export default class UserService {
         return fetch(this.url + 'managers', {
             method: 'GET',
             headers: {
-                'content-type':'application/json',
+                'content-type': 'application/json',
                 'Accept': 'application/json',
-                'Access-Control-Allow-Credentials':true,
-                'Access-Control-Allow-Origin':true
+                'Access-Control-Allow-Credentials': true,
+                'Access-Control-Allow-Origin': true
             }
         })
             .then(response => response.json())
@@ -71,10 +71,10 @@ export default class UserService {
         return fetch(this.url + 'owners', {
             method: 'GET',
             headers: {
-                'content-type':'application/json',
+                'content-type': 'application/json',
                 'Accept': 'application/json',
-                'Access-Control-Allow-Credentials':true,
-                'Access-Control-Allow-Origin':true
+                'Access-Control-Allow-Credentials': true,
+                'Access-Control-Allow-Origin': true
             }
         })
             .then(response => response.json())

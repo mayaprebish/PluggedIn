@@ -18,39 +18,46 @@ const stateToPropertyMapper = (state) => {
 };
 
 const dispatcherToPropertyMapper = dispatch => ({
-            changeUsername: (username) => {
-                dispatch({
-                    type: 'CHANGE_USERNAME',
-                    username: username
-                })
-            },
-            changePassword: (password) => {
-                dispatch({
-                    type: 'CHANGE_PASSWORD',
-                    password: password
-                })
-            },
-            login: (username, password, userType) => {
-                console.log("logging in");
-                console.log(userType)
+    userLoaded: () => {
+        dispatch({
+            type: 'USER_LOADED'
+        })
+    },
+    logout: () => {
+        dispatch({
+            type: 'LOGOUT'
+        })
+    },
+    changeUsername: (username) => {
+        dispatch({
+            type: 'CHANGE_USERNAME',
+            username: username
+        })
+    },
+    changePassword: (password) => {
+        dispatch({
+            type: 'CHANGE_PASSWORD',
+            password: password
+        })
+    },
+    login: (username, password) => {
+        console.log("logging in");
 
-                userService
-                    .login(username, password, userType)
-                    .then(user => {
-                        if (user == null) {
-                            console.log("user not found");
-                        } else {
-                          console.log("USER IN LOGIN IN LOGIN CONTAIN")
-                            console.log(user)
-                            dispatch({
-                                type: 'LOGIN',
-                                user: user
-                            })
-                        }
+        userService
+            .login(username, password)
+            .then(user => {
+                if (user == null) {
+                    console.log("user not found");
+                } else {
+                    console.log(user);
+                    dispatch({
+                        type: 'LOGIN',
+                        user: user
                     })
-            }
-
-    })
+                }
+            })
+    }
+});
 
 const LoginContainer =
     connect(stateToPropertyMapper,

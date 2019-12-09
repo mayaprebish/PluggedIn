@@ -18,63 +18,68 @@ const stateToPropertyMapper = (state) => {
 };
 
 const dispatcherToPropertyMapper = dispatch => {
-        return {
-            changeUsername: (username) => {
-              console.log(username);
-                dispatch({
-                    type: 'CHANGE_USERNAME',
-                    username: username
-                })
-            },
-            changePassword: (password) => {
-              console.log(password);
-                dispatch({
-                    type: 'CHANGE_PASSWORD',
-                    password: password
-                })
-            },
-            changeFirstName: (firstName) => {
-              console.log(firstName)
-                dispatch({
-                    type: 'CHANGE_FIRST_NAME',
-                    firstName: firstName
-                })
-            },
-            changeLastName: (lastName) => {
-              console.log(lastName);
-                dispatch({
-                    type: 'CHANGE_USERNAME',
-                    lastName: lastName
-                })
-            },
-            changeUserType: (userType) => {
-              console.log(userType);
-                dispatch({
-                    type: 'CHANGE_USER_TYPE',
-                    userType: userType
-                })
-            },
-            register: (username, password, firstName, lastName, userType) => {
-                console.log("signing up");
-                console.log(username);
-                console.log(password);
-                console.log(firstName);
-                console.log(lastName);
-                console.log(userType);
-                
-                userService
-                    .register(username, password, firstName, lastName, userType)
-                    .then(user => {
-                        console.log("got new user");
-                        console.log(user);
-                        dispatch({
-                            type: 'REGISTER',
-                            user: user
-                        })
+    return {
+        userLoaded: () => {
+            dispatch({
+                type: 'USER_LOADED'
+            })
+        },
+        logout: () => {
+            dispatch({
+                type: 'LOGOUT'
+            })
+        },
+        changeUsername: (username) => {
+            dispatch({
+                type: 'CHANGE_USERNAME',
+                username: username
+            })
+        },
+        changePassword: (password) => {
+            dispatch({
+                type: 'CHANGE_PASSWORD',
+                password: password
+            })
+        },
+        changeFirstName: (firstName) => {
+            dispatch({
+                type: 'CHANGE_FIRST_NAME',
+                firstName: firstName
+            })
+        },
+        changeLastName: (lastName) => {
+            dispatch({
+                type: 'CHANGE_LAST_NAME',
+                lastName: lastName
+            })
+        },
+        changeUserType: (userType) => {
+            dispatch({
+                type: 'CHANGE_USER_TYPE',
+                userType: userType
+            })
+        },
+        register: (username, password, firstName, lastName, userType) => {
+            console.log("signing up");
+            console.log(username);
+            console.log(password);
+            console.log(firstName);
+            console.log(lastName);
+            console.log(userType);
+
+            userService
+                .register(username, password, firstName, lastName, userType)
+                .then(user => {
+                    console.log("got new user");
+                    console.log(user);
+                    dispatch({
+                        type: 'REGISTER',
+                        user: user
                     })
-            }
+                })
         }
-    };
+    }
+};
 
 const RegisterContainer =
     connect(stateToPropertyMapper,

@@ -18,7 +18,18 @@ const stateToPropertyMapper = (state) => {
 };
 
 const dispatcherToPropertyMapper = dispatch => {
-    return {}
+    return {
+        userLoaded: () => {
+            dispatch({
+                type: 'USER_LOADED'
+            })
+        },
+        logout: () => {
+            dispatch({
+                type: 'LOGOUT'
+            })
+        }
+    }
 };
 
 const SearchContainer =
