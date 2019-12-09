@@ -30,7 +30,7 @@ const LoginReducer = (state = initialState, action) => {
                 password: '',
                 firstName: '',
                 lastName: '',
-                userType: '',
+                userType: 'Tour Manager',
                 venue: ''
             };
         case 'SELECT_VENUE':
