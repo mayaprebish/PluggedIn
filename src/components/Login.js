@@ -6,7 +6,12 @@ import './PluggedIn.css';
 export default class Login extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+          username: '',
+          password: '',
+          userType: ''
+
+        }
     }
 
     render() {
@@ -32,7 +37,7 @@ export default class Login extends React.Component {
                     </div>
                     <Link to="/profile" className="login-btn">
                         <button type="submit" className="btn btn-primary"
-                                onClick={() => this.props.login(this.state.username, this.state.password)}>
+                                onClick={() => this.props.login(this.props.username, this.props.password, this.props.userType)}>
                             Log In
                         </button>
                     </Link>
