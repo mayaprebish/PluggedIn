@@ -10,8 +10,8 @@ export default class UserService {
         return this.instance;
     }
 
-    login = (username, password, userType) => {
-        return fetch(this.url + '/' + `${username}` + '/' + `${password}` + '/' + `${userType}`, {
+    login = (username, password) => {
+        return fetch(this.url + '/' + `${username}` + '/' + `${password}`, {
             method: 'GET',
             headers: {
                 'content-type':'application/json',
@@ -22,10 +22,17 @@ export default class UserService {
         })
             .then(response => response.json())
             .catch(err => console.log(err));
-    }
+    };
 
     register = (username, password, firstName, lastName, userType) => {
-        return fetch('http://localhost:8080/api/user', {
+        let utype;
+        if (userType === "Tour Manager") {
+            utype = "manager"
+        }
+        if (userType === "Venue Owner") {
+            utype = "owner"
+        }
+        return fetch('http://localhost:8080/api/users/' + utype, {
             method: 'POST',
             headers: {
                 'content-type':'application/json',
@@ -33,13 +40,12 @@ export default class UserService {
                 'Access-Control-Allow-Credentials':true,
                 'Access-Control-Allow-Origin':true
             },
-            body: {
+            body: JSON.stringify({
                 username: username,
                 password: password,
                 firstName: firstName,
-                lastName: lastName,
-                userType: userType
-            }
+                lastName: lastName
+            })
         })
             .then(response => response.json())
             .catch(err => console.log(err));

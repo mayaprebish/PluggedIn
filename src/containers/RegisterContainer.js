@@ -20,14 +20,14 @@ const stateToPropertyMapper = (state) => {
 const dispatcherToPropertyMapper = dispatch => {
         return {
             changeUsername: (username) => {
-              console.log(username)
+              console.log(username);
                 dispatch({
                     type: 'CHANGE_USERNAME',
                     username: username
                 })
             },
             changePassword: (password) => {
-              console.log(password)
+              console.log(password);
                 dispatch({
                     type: 'CHANGE_PASSWORD',
                     password: password
@@ -41,14 +41,14 @@ const dispatcherToPropertyMapper = dispatch => {
                 })
             },
             changeLastName: (lastName) => {
-              console.log(lastName)
+              console.log(lastName);
                 dispatch({
                     type: 'CHANGE_USERNAME',
                     lastName: lastName
                 })
             },
             changeUserType: (userType) => {
-              console.log(userType)
+              console.log(userType);
                 dispatch({
                     type: 'CHANGE_USER_TYPE',
                     userType: userType
@@ -56,11 +56,11 @@ const dispatcherToPropertyMapper = dispatch => {
             },
             register: (username, password, firstName, lastName, userType) => {
                 console.log("signing up");
-                console.log(username)
-                console.log(password)
-                console.log(firstName)
-                console.log(lastName)
-                console.log(userType)
+                console.log(username);
+                console.log(password);
+                console.log(firstName);
+                console.log(lastName);
+                console.log(userType);
                 
                 userService
                     .register(username, password, firstName, lastName, userType)

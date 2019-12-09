@@ -45,6 +45,5 @@ export default class PluggedIn extends React.Component {
             </Router>
         )
     }
-
 }
 

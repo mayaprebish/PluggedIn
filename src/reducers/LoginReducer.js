@@ -1,7 +1,7 @@
 const initialState = {
     username: '',
     password: '',
-    userType: '',
+    userType: 'Tour Manager',
     firstName: '',
     lastName: '',
     loggedIn: false,
@@ -11,6 +11,17 @@ const initialState = {
 
 const LoginReducer = (state = initialState, action) => {
     switch (action.type) {
+        case 'LOGOUT':
+            return {
+                user: '',
+                loggedIn: false,
+                username: '',
+                password: '',
+                firstName: '',
+                lastName: '',
+                userType: '',
+                venue: ''
+            };
         case 'SELECT_VENUE':
             return {
                 user: state.user,

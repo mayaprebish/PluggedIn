@@ -19,6 +19,21 @@ const stateToPropertyMapper = (state) => {
 
 const dispatcherToPropertyMapper = dispatch => {
     return {
+        logout: () => {
+            dispatch({
+                type: 'LOGOUT'
+            })
+        },
+        loadUser: (username, password) => {
+            userService.login(username, password)
+                .then(user => {
+                    console.log(user);
+                    dispatch({
+                        type: 'LOAD_USER',
+                        user: user
+                    })
+                })
+        },
         changeUsername: (username) => {
             dispatch({
                 type: 'CHANGE_USERNAME',
