@@ -23,6 +23,12 @@ export default class Header extends React.Component {
                         </li>
 
                         <li className="nav-item">
+                            <Link to="/register" className="nav-link navbar-login">
+                                Register
+                            </Link>
+                        </li>
+
+                        <li className="nav-item">
                             <Link to="/profile" className="nav-link navbar-profile">
                                 Profile
                             </Link>
