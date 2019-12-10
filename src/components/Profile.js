@@ -4,10 +4,12 @@ import {Link} from 'react-router-dom';
 import './PluggedIn.css';
 import LoggedOutHeader from "./LoggedOutHeader";
 import LoggedInHeader from "./LoggedInHeader";
+import ArtistService from "../services/ArtistService";
 
 export default class Profile extends React.Component {
     constructor(props) {
         super(props);
+        this.artistService = ArtistService.getInstance();
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -43,7 +45,22 @@ export default class Profile extends React.Component {
                     </div>
 
                     <div className="container profile-container">
-                        <h3>Hello, {this.props.firstName}!</h3>
+                        <h2>Hello, {this.props.firstName}!</h2>
+                        <br/>
+                        {this.props.user.artists.length != 0 &&
+                          <div>
+                            <h4>My Artists:</h4>
+                              <ul className="list-group">
+                                {this.props.user.artists.map(artist =>
+                                <li className="list-group-item">
+                                  <h4>{artist.name}, {artist.location}, {artist.genre}
+                                  <button className="btn"
+                                          onClick={this.artistService.deleteArtist(artist.id)}>Delete</button></h4>
+
+                                </li>)}
+                              </ul>
+                          </div>
+                        }
                         <Link to='/login'>
                             <button onClick={() => this.props.logout()} className="btn btn-danger">
                                 Log Out
