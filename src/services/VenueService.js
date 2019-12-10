@@ -1,5 +1,5 @@
 export default class VenueService {
-    url = 'http://localhost:8080/api/venues';
+    url = 'https://webdev-team-15-server.herokuapp.com/api/venues';
     static instance = null;
 
     static getInstance() {

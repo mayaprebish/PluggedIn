@@ -1,5 +1,5 @@
 export default class ArtistService {
-    url = 'http://localhost:8080/api/users/';
+    url = 'https://webdev-team-15-server.herokuapp.com/api/users/';
     static instance = null;
 
     static getInstance() {
@@ -11,14 +11,14 @@ export default class ArtistService {
     }
 
     findAllArtistsForManager = managerId =>
-      fetch(`http://localhost:8080/api/users/managers/${managerId}/artists`)
+      fetch(`https://webdev-team-15-server.herokuapp.com/api/users/managers/${managerId}/artists`)
         .then(response => response.json());
 
     findAllArtists = () =>
-      fetch(`http://localhost:8080/api/artists`)
+      fetch(`https://webdev-team-15-server.herokuapp.com/api/artists`)
       .then(response => response.json());
 
     findArtistById = (artistId) =>
-      fetch(`http://localhost:8080/api/artists/${artistId}`)
+      fetch(`https://webdev-team-15-server.herokuapp.com/api/artists/${artistId}`)
       .then(response => response.json());
 }

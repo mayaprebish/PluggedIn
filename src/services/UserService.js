@@ -1,5 +1,5 @@
 export default class UserService {
-    url = 'http://localhost:8080/api/users/';
+    url = 'https://webdev-team-15-server.herokuapp.com/api/users/';
     static instance = null;
 
     static getInstance() {
