@@ -1,4 +1,4 @@
-## Problem: Venu owners have trouble keeping track of all their bookings.
+## Problem: Venue owners have trouble keeping track of all their bookings.
 ### User 1:  Tour Manager
 *	Finding and booking venues
 * Creating tours
