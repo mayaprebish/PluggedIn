@@ -39,7 +39,7 @@ const dispatcherToPropertyMapper = dispatch => {
             },
             changeLastName: (lastName) => {
                 dispatch({
-                    type: 'CHANGE_USERNAME',
+                    type: 'CHANGE_LAST_NAME',
                     lastName: lastName
                 })
             },

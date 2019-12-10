@@ -12,8 +12,6 @@ export default class SearchDetails extends React.Component {
         return (
             <div>
                 {this.props.venue.name !== '' &&
-
-                // console.log(this.props.venue) &&
                 <div className="container wbdv-details">
                     <h3>{this.props.venue.name}</h3>
                     <h4>Venue Type: {this.props.venue.venue_type}</h4>
@@ -24,25 +22,7 @@ export default class SearchDetails extends React.Component {
                 </div>
 
                 }
-                {this.props.venue.name !== '' && this.props.loggedIn === true && this.props.userType === 'Tour Manager' &&
 
-                <div>
-                  <button>Add Venue to Favorites</button>
-                  <br/>
-                  <Link to={{
-                    pathname: '/booking',
-                    venue: this.props.venue,
-                    artists: this.props.user.artists}}>
-                      <button className="btn">
-                          Create Booking
-                      </button>
-                  </Link>
-                </div>
-                }
-                {this.props.venue.name !== '' && this.props.loggedIn === true && this.props.userType === 'Venue Owner' &&
-
-                <button>This is my Venue</button>
-                }
             </div>
 
         )

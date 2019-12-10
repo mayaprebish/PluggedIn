@@ -41,3 +41,17 @@
 .register-container {
     margin-top: 40px;
 }
+
+.artist-list {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.tours-list {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.logout-btn {
+    margin-bottom: 40px;
+}

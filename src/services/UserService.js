@@ -51,6 +51,37 @@ export default class UserService {
             .catch(err => console.log(err));
     };
 
+    createArtist = (managerId, name, location, genre) =>
+        fetch(this.url + `managers/${managerId}/artist`, {
+            method: 'POST',
+            body: JSON.stringify({
+                name: name,
+                location: location,
+                genre: genre
+            }),
+            headers: {
+                'content-type': 'application/json',
+                'Accept': 'application/json',
+                'Access-Control-Allow-Credentials':true,
+                'Access-Control-Allow-Origin':"*",
+                'Access-Control-Allow-Headers': "*"
+            }
+        })
+            .then(response => response.json());
+
+    deleteArtist = (managerId, artistId) =>
+        fetch(this.url + `managers/${managerId}/artists/${artistId}`, {
+            method: 'DELETE',
+            headers: {
+                'content-type': 'application/json',
+                'Accept': 'application/json',
+                'Access-Control-Allow-Credentials':true,
+                'Access-Control-Allow-Origin':"*",
+                'Access-Control-Allow-Headers': "*"
+            }
+        })
+            .then(response => response.json());
+
     findAllManagers() {
         return fetch(this.url + 'managers', {
             method: 'GET',

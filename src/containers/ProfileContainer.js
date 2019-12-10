@@ -1,8 +1,10 @@
 import {connect} from 'react-redux'
 import UserService from "../services/UserService";
 import Profile from "../components/Profile";
+import ArtistService from "../services/ArtistService";
 
 const userService = UserService.getInstance();
+const artistService = ArtistService.getInstance();
 
 const stateToPropertyMapper = (state) => {
     return {
@@ -19,6 +21,26 @@ const stateToPropertyMapper = (state) => {
 
 const dispatcherToPropertyMapper = dispatch => {
     return {
+        addArtist: (mid, name, location, genre) => {
+            userService.createArtist(mid, name, location, genre)
+                .then(user => {
+                    console.log(user);
+                    dispatch({
+                        type: 'ADD_ARTIST',
+                        user: user
+                    })
+                })
+        },
+        deleteArtist: (mid, aid) => {
+            userService.deleteArtist(mid, aid)
+                .then(user => {
+                    console.log(user);
+                    dispatch({
+                        type: 'DELETE_ARTIST',
+                        user: user
+                    })
+                })
+        },
         userLoaded: () => {
             dispatch({
                 type: 'USER_LOADED'
@@ -59,20 +81,7 @@ const dispatcherToPropertyMapper = dispatch => {
                 type: 'CHANGE_USER_TYPE',
                 userType: userType
             })
-        },
-        // update: (username, password, firstName, lastName, userType) => {
-        //     console.log("updating profile");
-        //     userService
-        //         .updateProfile(username, password, firstName, lastName, userType)
-        //         .then(user => {
-        //             console.log("got new user");
-        //             console.log(user);
-        //             dispatch({
-        //                 type: 'REGISTER',
-        //                 user: user
-        //             })
-        //         })
-        // }
+        }
     }
 };
 

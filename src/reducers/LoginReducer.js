@@ -11,6 +11,28 @@ const initialState = {
 
 const LoginReducer = (state = initialState, action) => {
     switch (action.type) {
+        case 'ADD_ARTIST':
+            return {
+                user: action.user,
+                loggedIn: state.loggedIn,
+                username: state.username,
+                password: state.password,
+                firstName: state.firstName,
+                lastName: state.lastName,
+                userType: state.userType,
+                venue: state.venue
+            };
+        case 'DELETE_ARTIST':
+            return {
+                user: action.user,
+                loggedIn: state.loggedIn,
+                username: state.username,
+                password: state.password,
+                firstName: state.firstName,
+                lastName: state.lastName,
+                userType: state.userType,
+                venue: state.venue
+            };
         case 'USER_LOADED':
             return {
                 user: state.user,

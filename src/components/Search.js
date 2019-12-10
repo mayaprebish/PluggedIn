@@ -4,6 +4,7 @@ import SearchList from "./SearchList";
 import SearchDetails from "./SearchDetails";
 import LoggedOutHeader from "./LoggedOutHeader";
 import LoggedInHeader from "./LoggedInHeader";
+import {Link} from "react-router-dom";
 
 export default class Search extends Component {
     venueService = VenueService.getInstance();
@@ -133,6 +134,24 @@ export default class Search extends Component {
                                 <SearchDetails venue={this.state.venue} loggedIn={this.props.loggedIn}
                                                userType={this.props.userType}
                                                user={this.props.user}/>
+
+                                {this.state.venue.name !== '' && this.props.loggedIn === true && this.props.userType === 'Tour Manager' &&
+                                <div>
+                                    <Link to={{
+                                        pathname: '/booking',
+                                        venue: this.props.venue,
+                                        user: this.props.user
+                                    }}>
+                                        <button className="btn btn-primary">
+                                            Book this Venue
+                                        </button>
+                                    </Link>
+                                </div>
+                                }
+                                {this.state.venue.name !== '' && this.props.loggedIn === true && this.props.userType === 'Venue Owner' &&
+
+                                <button className="btn btn-primary">Add this Venue to my profile</button>
+                                }
                             </div>
                         </div>
                     </div>

@@ -1,8 +1,10 @@
 import {connect} from 'react-redux'
 import UserService from "../services/UserService";
 import Login from "../components/Login";
+import ArtistService from "../services/ArtistService";
 
 const userService = UserService.getInstance();
+const artistService = ArtistService.getInstance();
 
 const stateToPropertyMapper = (state) => {
     return {

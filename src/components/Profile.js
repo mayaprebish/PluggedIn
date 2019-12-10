@@ -9,17 +9,30 @@ import ArtistService from "../services/ArtistService";
 export default class Profile extends React.Component {
     constructor(props) {
         super(props);
-        this.artistService = ArtistService.getInstance();
+
+        this.state = {
+            name: '',
+            location: '',
+            genre: ''
+        }
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         this.loadUser();
     }
 
+    componentDidMount() {
+        this.registerBookings();
+    }
+
     loadUser() {
         if (this.props.user !== '') {
             this.props.userLoaded();
         }
+    }
+
+    registerBookings() {
+
     }
 
     render() {
@@ -47,22 +60,147 @@ export default class Profile extends React.Component {
                     <div className="container profile-container">
                         <h2>Hello, {this.props.firstName}!</h2>
                         <br/>
-                        {this.props.user.artists.length != 0 &&
-                          <div>
-                            <h4>My Artists:</h4>
-                              <ul className="list-group">
-                                {this.props.user.artists.map(artist =>
-                                <li className="list-group-item">
-                                  <h4>{artist.name}, {artist.location}, {artist.genre}
-                                  <button className="btn"
-                                          onClick={this.artistService.deleteArtist(artist.id)}>Delete</button></h4>
+                        <h4>Your Artists:</h4>
 
-                                </li>)}
-                              </ul>
-                          </div>
+                        {this.props.user.artists && this.props.user.artists.length === 0 &&
+                        <div className="artist-list">
+                            <li className="list-group-item">
+                                <h6>Add new artist:</h6>
+                                <form>
+                                    <div className="form-group">
+                                        <input className="form-control" id="artist-name"
+                                               placeholder="Artist name"
+                                               aria-describedby="artist-name"
+                                               onChange={e => {
+                                                   this.setState({
+                                                       name: e.currentTarget.value
+                                                   })
+                                               }}
+                                        />
+                                    </div>
+                                    <div className="form-group">
+                                        <input className="form-control" id="location"
+                                               placeholder="Artist location/region"
+                                               onChange={e => {
+                                                   this.setState({
+                                                       location: e.currentTarget.value
+                                                   })
+                                               }}
+                                        />
+                                    </div>
+                                    <div className="form-group">
+                                        <input className="form-control" id="genre"
+                                               placeholder="Genre"
+                                               onChange={e => {
+                                                   this.setState({
+                                                       genre: e.currentTarget.value
+                                                   })
+                                               }}
+                                        />
+                                    </div>
+                                    <button className="btn btn-primary"
+                                            onClick={() =>
+                                                this.props.addArtist(this.props.user.id,
+                                                this.state.name, this.state.location,
+                                                this.state.genre)
+                                            }>
+                                        Add to profile
+                                    </button>
+                                </form>
+                            </li>
+                        </div>
                         }
+
+                        {this.props.user.artists && this.props.user.artists.length !== 0 &&
+                        <div>
+                            <ul className="list-group artist-list">
+                                {this.props.user.artists.map(artist =>
+                                    <li className="list-group-item">
+                                        <h4>{artist.name}</h4>
+                                        <h6>Location: {artist.location}</h6>
+                                        <h6>Genre: {artist.genre}</h6>
+                                        <button className="btn btn-danger"
+                                                onClick={() => this.props.deleteArtist(this.props.user.id, artist.id)}>
+                                            Delete from profile
+                                        </button>
+
+                                    </li>)}
+                                <li className="list-group-item">
+                                    <h6>Add new artist:</h6>
+                                    <form>
+                                        <div className="form-group">
+                                            <input className="form-control" id="artist-name"
+                                                   placeholder="Artist name"
+                                                   aria-describedby="artist-name"
+                                                   onChange={e => {
+                                                       this.setState({
+                                                           name: e.currentTarget.value
+                                                       })
+                                                   }}
+                                            />
+                                        </div>
+                                        <div className="form-group">
+                                            <input className="form-control" id="location"
+                                                   placeholder="Artist location/region"
+                                                   onChange={e => {
+                                                       this.setState({
+                                                           location: e.currentTarget.value
+                                                       })
+                                                   }}
+                                            />
+                                        </div>
+                                        <div className="form-group">
+                                            <input className="form-control" id="genre"
+                                                   placeholder="Genre"
+                                                   onChange={e => {
+                                                       this.setState({
+                                                           genre: e.currentTarget.value
+                                                       })
+                                                   }}
+                                            />
+                                        </div>
+                                    </form>
+                                    <button className="btn btn-primary"
+                                            onClick={() =>
+                                                this.props.addArtist(this.props.user.id,
+                                                    this.state.name, this.state.location,
+                                                    this.state.genre)
+                                            }>
+                                        Add to profile
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                        }
+
+                        <h4 className="tours-list">Your Tours:</h4>
+                        {this.props.user.tours && this.props.user.tours.length === 0 &&
+                        <div className="tours-list">
+                            <li className="list-group-item">
+                                <h6>Create your first tour!</h6>
+                            </li>
+                        </div>
+                        }
+
+                        {this.props.user.tours && this.props.user.tours.length !== 0 &&
+                        <div>
+                            <ul className="list-group tours-list">
+                                {this.props.user.tours.map(tour =>
+                                    <li className="list-group-item">
+                                        <h4>{tour.title}</h4>
+                                        <br/>
+                                        <button className="btn btn-danger">
+                                            // onClick={}>
+                                            Delete this tour
+                                        </button>
+
+                                    </li>)}
+                            </ul>
+                        </div>
+                        }
+
                         <Link to='/login'>
-                            <button onClick={() => this.props.logout()} className="btn btn-danger">
+                            <button onClick={() => this.props.logout()} className="btn btn-danger logout-btn">
                                 Log Out
                             </button>
                         </Link>
