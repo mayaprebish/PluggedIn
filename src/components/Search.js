@@ -131,7 +131,8 @@ export default class Search extends Component {
 
                             <div className='col-6 wbdv-venue-details'>
                                 <SearchDetails venue={this.state.venue} loggedIn={this.props.loggedIn}
-                                               userType={this.props.userType}/>
+                                               userType={this.props.userType}
+                                               user={this.props.user}/>
                             </div>
                         </div>
                     </div>

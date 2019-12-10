@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 export default class SearchDetails extends React.Component {
     constructor(props) {
@@ -25,7 +26,18 @@ export default class SearchDetails extends React.Component {
                 }
                 {this.props.venue.name !== '' && this.props.loggedIn === true && this.props.userType === 'Tour Manager' &&
 
-                <button>Add Venue to Favorites</button>
+                <div>
+                  <button>Add Venue to Favorites</button>
+                  <br/>
+                  <Link to={{
+                    pathname: '/booking',
+                    venue: this.props.venue,
+                    artists: this.props.user.artists}}>
+                      <button className="btn">
+                          Create Booking
+                      </button>
+                  </Link>
+                </div>
                 }
                 {this.props.venue.name !== '' && this.props.loggedIn === true && this.props.userType === 'Venue Owner' &&
 
