@@ -26,6 +26,12 @@ export default class LoggedInHeader extends React.Component {
                                 Search
                             </Link>
                         </li>
+
+                        <li className="nav-item">
+                            <Link to="/privacy-policy" className="nav-link navbar-search">
+                                Privacy Policy
+                            </Link>
+                        </li>
                     </ul>
                 </nav>
             </div>

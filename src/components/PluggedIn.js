@@ -4,6 +4,7 @@ import './PluggedIn.css';
 import Header from "./LoggedOutHeader";
 
 import BookingForm from "./BookingForm";
+import PrivacyPolicy from "./PrivacyPolicy"
 
 import {createStore} from 'redux'
 import {Provider} from 'react-redux'
@@ -38,6 +39,7 @@ export default class PluggedIn extends React.Component {
                             <Route path="/profile" component={ProfileContainer}/>
                             <Route path="/search" component={SearchContainer}/>
                             <Route path="/booking" component={BookingForm}/>
+                            <Route path="/privacy-policy" component={PrivacyPolicy}/>
                         </div>
                     </Provider>
                 </div>
