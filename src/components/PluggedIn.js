@@ -3,6 +3,8 @@ import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import './PluggedIn.css';
 import Header from "./LoggedOutHeader";
 
+import BookingForm from "./BookingForm";
+
 import {createStore} from 'redux'
 import {Provider} from 'react-redux'
 import LoginReducer from "../reducers/LoginReducer";
@@ -35,6 +37,7 @@ export default class PluggedIn extends React.Component {
                             <Route path="/register" component={RegisterContainer}/>
                             <Route path="/profile" component={ProfileContainer}/>
                             <Route path="/search" component={SearchContainer}/>
+                            <Route path="/booking" component={BookingForm}/>
                         </div>
                     </Provider>
                 </div>
@@ -42,4 +45,3 @@ export default class PluggedIn extends React.Component {
         )
     }
 }
-
