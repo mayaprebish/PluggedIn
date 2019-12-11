@@ -56,8 +56,8 @@ export default class Login extends React.Component {
                                 <button type="submit" className="btn btn-primary"
                                         onClick={() => {
                                             let inputs = [this.props.username, this.props.password];
-                                            console.log("all inputs filled: ", inputs.every(i => !this.inputEmpty(i)));
-                                            if (inputs.every(i => this.inputEmpty(i))) {
+                                            console.log("all inputs filled: ", inputs.some(i => !this.inputEmpty(i)));
+                                            if (inputs.some(i => this.inputEmpty(i))) {
                                                 alert("One or more required fields empty");
                                                 console.log("inputs: ",  inputs);
                                             }

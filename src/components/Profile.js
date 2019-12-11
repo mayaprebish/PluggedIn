@@ -105,8 +105,8 @@ export default class Profile extends React.Component {
                                     <button className="btn btn-primary"
                                             onClick={() => {
                                                 let inputs = [this.props.state.name, this.props.state.location, this.state.genre];
-                                                console.log("all inputs filled: ", inputs.every(i => !this.inputEmpty(i)));
-                                                if (inputs.every(i => this.inputEmpty(i))) {
+                                                console.log("all inputs filled: ", inputs.some(i => !this.inputEmpty(i)));
+                                                if (inputs.some(i => this.inputEmpty(i))) {
                                                     alert("One or more required fields empty");
                                                     console.log("inputs: ",  inputs);
                                                 }

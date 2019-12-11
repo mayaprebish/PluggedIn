@@ -90,8 +90,8 @@ export default class Register extends React.Component {
                                         onClick={() => {
                                             let inputs = [this.props.username, this.props.password,
                                                 this.props.firstName, this.props.lastName];
-                                            console.log("all inputs filled: ", inputs.every(i => !this.inputEmpty(i)));
-                                            if (inputs.every(i => this.inputEmpty(i))) {
+                                            console.log("all inputs filled: ", inputs.some(i => !this.inputEmpty(i)));
+                                            if (inputs.some(i => this.inputEmpty(i))) {
                                                 alert("One or more required fields empty");
                                                 console.log("inputs: ",  inputs);
                                             }
