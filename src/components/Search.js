@@ -36,7 +36,6 @@ export default class Search extends Component {
 
     searchVenues() {
         this.venueService.findVenues(this.state.searchTitle)
-            .then(response => response.json())
             .then(items => {
                 this.setState({
                     venues: items.venues.venue
@@ -53,7 +52,6 @@ export default class Search extends Component {
 
     selectVenue = venueId =>
         this.venueService.getVenue(venueId)
-            .then(response => response.json())
             .then(venue => {
                 this.setState({
                     venue: venue
@@ -87,15 +85,12 @@ export default class Search extends Component {
                         </div>
 
                         <div className="row">
-                            <div className="col-6 wbdv-venue-list">
+                            <div className="col wbdv-venue-list">
                                 <SearchList
                                     venues={this.state && this.state.venues && this.state.venues}
-                                    selectVenue={this.selectVenue}/>
-                            </div>
-
-                            <div className='col-6 wbdv-venue-details'>
-                                <SearchDetails venue={this.state.venue} loggedIn={this.props.loggedIn}
-                                               userType={this.props.userType}/>
+                                    selectVenue={this.selectVenue}
+                                loggedIn={this.props.loggedIn}
+                                userType={this.props.userType}/>
                             </div>
                         </div>
                     </div>
@@ -124,35 +119,35 @@ export default class Search extends Component {
                         </div>
 
                         <div className="row">
-                            <div className="col-6 wbdv-venue-list">
+                            <div className="col wbdv-venue-list">
                                 <SearchList
                                     venues={this.state && this.state.venues && this.state.venues}
                                     selectVenue={this.selectVenue}/>
                             </div>
 
-                            <div className='col-6 wbdv-venue-details'>
-                                <SearchDetails venue={this.state.venue} loggedIn={this.props.loggedIn}
-                                               userType={this.props.userType}
-                                               user={this.props.user}/>
+                            {/*<div className='col-6 wbdv-venue-details'>*/}
+                            {/*    <SearchDetails venue={this.state.venue} loggedIn={this.props.loggedIn}*/}
+                            {/*                   userType={this.props.userType}*/}
+                            {/*                   user={this.props.user}/>*/}
 
-                                {this.state.venue.name !== '' && this.props.loggedIn === true && this.props.userType === 'Tour Manager' &&
-                                <div>
-                                    <Link to={{
-                                        pathname: '/booking',
-                                        venue: this.props.venue,
-                                        user: this.props.user
-                                    }}>
-                                        <button className="btn btn-primary">
-                                            Book this Venue
-                                        </button>
-                                    </Link>
-                                </div>
-                                }
-                                {this.state.venue.name !== '' && this.props.loggedIn === true && this.props.userType === 'Venue Owner' &&
+                            {/*    {this.state.venue.name !== '' && this.props.loggedIn === true && this.props.userType === 'Tour Manager' &&*/}
+                            {/*    <div>*/}
+                            {/*        <Link to={{*/}
+                            {/*            pathname: '/booking',*/}
+                            {/*            venue: this.props.venue,*/}
+                            {/*            user: this.props.user*/}
+                            {/*        }}>*/}
+                            {/*            <button className="btn btn-primary">*/}
+                            {/*                Book this Venue*/}
+                            {/*            </button>*/}
+                            {/*        </Link>*/}
+                            {/*    </div>*/}
+                            {/*    }*/}
+                            {/*    {this.state.venue.name !== '' && this.props.loggedIn === true && this.props.userType === 'Venue Owner' &&*/}
 
-                                <button className="btn btn-primary">Add this Venue to my profile</button>
-                                }
-                            </div>
+                            {/*    <button className="btn btn-primary">Add this Venue to my profile</button>*/}
+                            {/*    }*/}
+                            {/*</div>*/}
                         </div>
                     </div>
                 </div>

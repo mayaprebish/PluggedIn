@@ -82,10 +82,11 @@ export default class UserService {
         })
             .then(response => response.json());
 
-    createVenue = (ownerId, name, location) =>
+    createVenue = (ownerId, venueId, name, location) =>
         fetch(this.url + `owners/${ownerId}/venue`, {
             method: 'POST',
             body: JSON.stringify({
+                id: venueId,
                 name: name,
                 location: location
             }),

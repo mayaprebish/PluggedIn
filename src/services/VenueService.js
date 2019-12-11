@@ -22,6 +22,7 @@ export default class VenueService {
                 'Access-Control-Allow-Headers': '*'
             }
         })
+            .then(response => response.json());
     }
 
     getVenue(venueId) {
@@ -36,6 +37,7 @@ export default class VenueService {
             'Access-Control-Allow-Headers': '*'
         }
       })
+          .then(response => response.json());
     }
 
 }
