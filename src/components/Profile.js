@@ -9,12 +9,6 @@ import ArtistService from "../services/ArtistService";
 export default class Profile extends React.Component {
     constructor(props) {
         super(props);
-
-        this.state = {
-            name: '',
-            location: '',
-            genre: ''
-        }
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -78,45 +72,27 @@ export default class Profile extends React.Component {
                                 placeholder="Artist name"
                                 aria-describedby="artist-name"
                                 onChange={e => {
-                                this.setState({
-                                    name: e.currentTarget.value
-                                })
-                            }}
+                                    this.props.changeArtistName(e.currentTarget.value);
+                                }}
                                 />
                                 </div>
                                 <div className="form-group">
                                 <input className="form-control" id="location"
                                 placeholder="Artist location/region"
                                 onChange={e => {
-                                this.setState({
-                                    location: e.currentTarget.value
-                                })
-                            }}
+                                    this.props.changeArtistLocation(e.currentTarget.value);
+                                }}
                                 />
                                 </div>
                                 <div className="form-group">
                                 <input className="form-control" id="genre"
                                 placeholder="Genre"
                                 onChange={e => {
-                                this.setState({
-                                    genre: e.currentTarget.value
-                                })
-                            }}
+                                    this.props.changeArtistGenre(e.currentTarget.value);
+                                }}
                                 />
                                 </div>
-                                <button className="btn btn-primary"
-                                onClick={() => {
-                                let inputs = [this.props.state.name, this.props.state.location, this.state.genre];
-                                console.log("all inputs filled: ", inputs.some(i => !this.inputEmpty(i)));
-                                if (inputs.some(i => this.inputEmpty(i))) {
-                                    alert("One or more required fields empty");
-                                    console.log("inputs: ", inputs);
-                                } else {
-                                    this.props.addArtist(this.props.user.id,
-                                        this.state.name, this.state.location,
-                                        this.state.genre)
-                                }
-                            }}>
+                                <button className="btn btn-primary">
                                 Add to profile
                                 </button>
                                 </form>
@@ -146,30 +122,24 @@ export default class Profile extends React.Component {
                                 placeholder="Artist name"
                                 aria-describedby="artist-name"
                                 onChange={e => {
-                                this.setState({
-                                    name: e.currentTarget.value
-                                })
-                            }}
+                                    this.props.changeArtistName(e.currentTarget.value);
+                                }}
                                 />
                                 </div>
                                 <div className="form-group">
                                 <input className="form-control" id="location"
                                 placeholder="Artist location/region"
                                 onChange={e => {
-                                this.setState({
-                                    location: e.currentTarget.value
-                                })
-                            }}
+                                    this.props.changeArtistLocation(e.currentTarget.value);
+                                }}
                                 />
                                 </div>
                                 <div className="form-group">
                                 <input className="form-control" id="genre"
                                 placeholder="Genre"
                                 onChange={e => {
-                                this.setState({
-                                    genre: e.currentTarget.value
-                                })
-                            }}
+                                    this.props.changeArtistGenre(e.currentTarget.value);
+                                }}
                                 />
                                 </div>
                                 </form>
@@ -228,9 +198,7 @@ export default class Profile extends React.Component {
                                                    placeholder="Venue name"
                                                    aria-describedby="venue-name"
                                                    onChange={e => {
-                                                       this.setState({
-                                                           name: e.currentTarget.value
-                                                       })
+                                                       this.props.changeVenueName(e.currentTarget.value);
                                                    }}
                                             />
                                         </div>
@@ -238,24 +206,13 @@ export default class Profile extends React.Component {
                                             <input className="form-control" id="location"
                                                    placeholder="Venue location"
                                                    onChange={e => {
-                                                       this.setState({
-                                                           location: e.currentTarget.value
-                                                       })
+                                                       this.props.changeVenueLocation(e.currentTarget.value);
                                                    }}
                                             />
                                         </div>
                                         <button className="btn btn-primary"
-                                                onClick={() => {
-                                                    let inputs = [this.props.state.name, this.props.state.location];
-                                                    console.log("all inputs filled: ", inputs.some(i => !this.inputEmpty(i)));
-                                                    if (inputs.some(i => this.inputEmpty(i))) {
-                                                        alert("One or more required fields empty");
-                                                        console.log("inputs: ", inputs);
-                                                    } else {
-                                                        this.props.addVenue(this.props.user.id,
-                                                            this.state.name, this.state.location)
-                                                    }
-                                                }}>
+                                              onClick={e => {e.preventDefault();
+                                                              this.props.addVenue(this.props.user.id, this.props.venueName, this.props.venueLocation)}}>
                                             Add to profile
                                         </button>
                                     </form>
@@ -284,9 +241,7 @@ export default class Profile extends React.Component {
                                                        placeholder="Venue name"
                                                        aria-describedby="venue-name"
                                                        onChange={e => {
-                                                           this.setState({
-                                                               name: e.currentTarget.value
-                                                           })
+                                                           this.props.changeVenueName(e.currentTarget.value);
                                                        }}
                                                 />
                                             </div>
@@ -294,18 +249,12 @@ export default class Profile extends React.Component {
                                                 <input className="form-control" id="location"
                                                        placeholder="Venue location"
                                                        onChange={e => {
-                                                           this.setState({
-                                                               location: e.currentTarget.value
-                                                           })
+                                                           this.props.changeVenueLocation(e.currentTarget.value);
                                                        }}
                                                 />
                                             </div>
                                         </form>
-                                        <button className="btn btn-primary"
-                                                onClick={() =>
-                                                    this.props.addVenue(this.props.user.id,
-                                                        this.state.name, this.state.location)
-                                                }>
+                                        <button className="btn btn-primary">
                                             Add to profile
                                         </button>
                                     </li>
