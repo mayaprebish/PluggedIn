@@ -31,6 +31,10 @@ export default class Profile extends React.Component {
         }
     }
 
+    inputEmpty = input => {
+        return input.length < 1;
+    }
+
     registerBookings() {
 
     }
@@ -99,11 +103,19 @@ export default class Profile extends React.Component {
                                         />
                                     </div>
                                     <button className="btn btn-primary"
-                                            onClick={() =>
-                                                this.props.addArtist(this.props.user.id,
-                                                this.state.name, this.state.location,
-                                                this.state.genre)
-                                            }>
+                                            onClick={() => {
+                                                let inputs = [this.props.state.name, this.props.state.location, this.state.genre];
+                                                console.log("all inputs filled: ", inputs.every(i => !this.inputEmpty(i)));
+                                                if (inputs.every(i => this.inputEmpty(i))) {
+                                                    alert("One or more required fields empty");
+                                                    console.log("inputs: ",  inputs);
+                                                }
+                                                else {
+                                                    this.props.addArtist(this.props.user.id,
+                                                        this.state.name, this.state.location,
+                                                        this.state.genre)
+                                                }
+                                            }}>
                                         Add to profile
                                     </button>
                                 </form>
