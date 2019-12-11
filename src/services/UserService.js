@@ -1,5 +1,6 @@
 export default class UserService {
     url = 'https://webdev-team-15-server.herokuapp.com/api/users/';
+    // url = 'http://localhost:8080/api/users/';
     static instance = null;
 
     static getInstance() {
@@ -82,13 +83,15 @@ export default class UserService {
         })
             .then(response => response.json());
 
-    createVenue = (ownerId, venueId, name, location) =>
+    createVenue = (ownerId, name, location) =>
         fetch(this.url + `owners/${ownerId}/venue`, {
             method: 'POST',
             body: JSON.stringify({
-                id: venueId,
+                id: (new Date()).getTime()/1000,
                 name: name,
-                location: location
+                location: location,
+                bookings: [],
+                artists: []
             }),
             headers: {
                 'content-type': 'application/json',
