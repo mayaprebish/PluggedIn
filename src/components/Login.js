@@ -20,6 +20,10 @@ export default class Login extends React.Component {
         }
     }
 
+    inputEmpty = input => {
+        return input.length < 1;
+    }
+
     render() {
         return (
             <div className="login-content">
@@ -51,8 +55,16 @@ export default class Login extends React.Component {
                             <Link to="/profile" className="login-btn">
                                 <button type="submit" className="btn btn-primary"
                                         onClick={() => {
-                                            console.log(this.props.username + ", " + this.props.password);
-                                            this.props.login(this.props.username, this.props.password)
+                                            let inputs = [this.props.username, this.props.password];
+                                            console.log("all inputs filled: ", inputs.every(i => !this.inputEmpty(i)));
+                                            if (inputs.every(i => this.inputEmpty(i))) {
+                                                alert("One or more required fields empty");
+                                                console.log("inputs: ",  inputs);
+                                            }
+                                            else {
+                                                console.log(this.props.username + ", " + this.props.password);
+                                                this.props.login(this.props.username, this.props.password)
+                                            }
                                         }}>
                                     Log In
                                 </button>
