@@ -20,6 +20,10 @@ export default class Register extends React.Component {
         }
     }
 
+    inputEmpty = input => {
+        return input.length < 1;
+    }
+
     render() {
         return (
             <div className="register-content">
@@ -39,7 +43,8 @@ export default class Register extends React.Component {
                                        aria-describedby="username"
                                        onChange={e => {
                                            this.props.changeUsername(e.target.value);
-                                       }}/>
+                                       }}
+                                />
                             </div>
 
                             <div className="form-group">
@@ -83,11 +88,20 @@ export default class Register extends React.Component {
                             <Link to="/profile" className="login-btn">
                                 <button type="submit" className="btn btn-primary"
                                         onClick={() => {
-                                            this.props.register(this.props.username,
-                                                this.props.password,
-                                                this.props.firstName,
-                                                this.props.lastName,
-                                                this.props.userType)
+                                            let inputs = [this.props.username, this.props.password,
+                                                this.props.firstName, this.props.lastName];
+                                            console.log("all inputs filled: ", inputs.every(i => !this.inputEmpty(i)));
+                                            if (inputs.every(i => this.inputEmpty(i))) {
+                                                alert("One or more required fields empty");
+                                                console.log("inputs: ",  inputs);
+                                            }
+                                            else {
+                                                this.props.register(this.props.username,
+                                                    this.props.password,
+                                                    this.props.firstName,
+                                                    this.props.lastName,
+                                                    this.props.userType)
+                                            }
                                         }}>
                                     Sign up
                                 </button>
