@@ -82,6 +82,36 @@ export default class UserService {
         })
             .then(response => response.json());
 
+    createVenue = (ownerId, name, location) =>
+        fetch(this.url + `owners/${ownerId}/venue`, {
+            method: 'POST',
+            body: JSON.stringify({
+                name: name,
+                location: location
+            }),
+            headers: {
+                'content-type': 'application/json',
+                'Accept': 'application/json',
+                'Access-Control-Allow-Credentials':true,
+                'Access-Control-Allow-Origin':"*",
+                'Access-Control-Allow-Headers': "*"
+            }
+        })
+            .then(response => response.json());
+
+    deleteVenue = (ownerId, venueId) =>
+        fetch(this.url + `owners/${ownerId}/venues/${venueId}`, {
+            method: 'DELETE',
+            headers: {
+                'content-type': 'application/json',
+                'Accept': 'application/json',
+                'Access-Control-Allow-Credentials':true,
+                'Access-Control-Allow-Origin':"*",
+                'Access-Control-Allow-Headers': "*"
+            }
+        })
+            .then(response => response.json());
+
     findAllManagers() {
         return fetch(this.url + 'managers', {
             method: 'GET',

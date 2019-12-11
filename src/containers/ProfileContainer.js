@@ -41,6 +41,26 @@ const dispatcherToPropertyMapper = dispatch => {
                     })
                 })
         },
+        addVenue: (oid, name, location) => {
+            userService.createVenue(oid, name, location)
+                .then(user => {
+                    console.log(user);
+                    dispatch({
+                        type: 'ADD_VENUE',
+                        user: user
+                    })
+                })
+        },
+        deleteVenue: (oid, vid) => {
+            userService.deleteArtist(oid, vid)
+                .then(user => {
+                    console.log(user);
+                    dispatch({
+                        type: 'DELETE_VENUE',
+                        user: user
+                    })
+                })
+        },
         userLoaded: () => {
             dispatch({
                 type: 'USER_LOADED'

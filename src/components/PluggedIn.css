@@ -2,18 +2,9 @@
     color: black;
 }
 
-.login-form {
-    margin-top: 40px;
-}
-
-.register-form {
-    margin-top: 40px;
-}
-
-.search-container {
-    margin-top: 40px;
-}
-
+.login-form,
+.register-form,
+.search-container,
 .profile-container {
     margin-top: 40px;
 }
@@ -34,20 +25,15 @@
     margin-bottom: 20px;
 }
 
-.profile-container {
-    margin-top: 40px;
-}
-
+.profile-container,
 .register-container {
     margin-top: 40px;
 }
 
-.artist-list {
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
 
-.tours-list {
+.artist-list,
+.tours-list,
+.venue-list {
     margin-top: 20px;
     margin-bottom: 20px;
 }
