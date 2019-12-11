@@ -6,7 +6,12 @@ const initialState = {
     lastName: '',
     loggedIn: false,
     user: '',
-    venue: ''
+    venue: '',
+    venueName: '',
+    venueLocation: '',
+    artistName: '',
+    artistLocation: '',
+    artistGenre: ''
 };
 
 const LoginReducer = (state = initialState, action) => {
@@ -20,7 +25,12 @@ const LoginReducer = (state = initialState, action) => {
                 firstName: state.firstName,
                 lastName: state.lastName,
                 userType: state.userType,
-                venue: state.venue
+                venue: state.venue,
+                venueName: state.venueName,
+                venueLocation: state.venueLocation,
+                artistName: state.artistName,
+                artistLocation: state.artistLocation,
+                artistGenre: state.artistGenre
             };
         case 'ADD_ARTIST':
             return {
@@ -31,7 +41,12 @@ const LoginReducer = (state = initialState, action) => {
                 firstName: state.firstName,
                 lastName: state.lastName,
                 userType: state.userType,
-                venue: state.venue
+                venue: state.venue,
+                venueName: state.venueName,
+                venueLocation: state.venueLocation,
+                artistName: state.artistName,
+                artistLocation: state.artistLocation,
+                artistGenre: state.artistGenre
             };
         case 'DELETE_ARTIST':
             return {
@@ -42,7 +57,12 @@ const LoginReducer = (state = initialState, action) => {
                 firstName: state.firstName,
                 lastName: state.lastName,
                 userType: state.userType,
-                venue: state.venue
+                venue: state.venue,
+                venueName: state.venueName,
+                venueLocation: state.venueLocation,
+                artistName: state.artistName,
+                artistLocation: state.artistLocation,
+                artistGenre: state.artistGenre
             };
         case 'ADD_VENUE':
             return {
@@ -53,7 +73,12 @@ const LoginReducer = (state = initialState, action) => {
                 firstName: state.firstName,
                 lastName: state.lastName,
                 userType: state.userType,
-                venue: state.venue
+                venue: state.venue,
+                venueName: state.venueName,
+                venueLocation: state.venueLocation,
+                artistName: state.artistName,
+                artistLocation: state.artistLocation,
+                artistGenre: state.artistGenre
             };
         case 'DELETE_VENUE':
             return {
@@ -64,7 +89,12 @@ const LoginReducer = (state = initialState, action) => {
                 firstName: state.firstName,
                 lastName: state.lastName,
                 userType: state.userType,
-                venue: state.venue
+                venue: state.venue,
+                venueName: state.venueName,
+                venueLocation: state.venueLocation,
+                artistName: state.artistName,
+                artistLocation: state.artistLocation,
+                artistGenre: state.artistGenre
             };
         case 'USER_LOADED':
             return {
@@ -75,7 +105,12 @@ const LoginReducer = (state = initialState, action) => {
                 firstName: state.firstName,
                 lastName: state.lastName,
                 userType: state.userType,
-                venue: state.venue
+                venue: state.venue,
+                venueName: state.venueName,
+                venueLocation: state.venueLocation,
+                artistName: state.artistName,
+                artistLocation: state.artistLocation,
+                artistGenre: state.artistGenre
             };
         case 'LOGOUT':
             return {
@@ -86,7 +121,12 @@ const LoginReducer = (state = initialState, action) => {
                 firstName: '',
                 lastName: '',
                 userType: 'Tour Manager',
-                venue: ''
+                venue: '',
+                venueName: '',
+                venueLocation: '',
+                artistName: '',
+                artistLocation: '',
+                artistGenre: ''
             };
         case 'SELECT_VENUE':
             return {
@@ -97,7 +137,12 @@ const LoginReducer = (state = initialState, action) => {
                 firstName: state.firstName,
                 lastName: state.lastName,
                 userType: state.userType,
-                venue: action.venue
+                venue: action.venue,
+                venueName: state.venueName,
+                venueLocation: state.venueLocation,
+                artistName: state.artistName,
+                artistLocation: state.artistLocation,
+                artistGenre: state.artistGenre
             };
         case 'CHANGE_USERNAME':
             return {
@@ -108,7 +153,12 @@ const LoginReducer = (state = initialState, action) => {
                 firstName: state.firstName,
                 lastName: state.lastName,
                 userType: state.userType,
-                venue: state.venue
+                venue: state.venue,
+                venueName: state.venueName,
+                venueLocation: state.venueLocation,
+                artistName: state.artistName,
+                artistLocation: state.artistLocation,
+                artistGenre: state.artistGenre
             };
         case 'CHANGE_PASSWORD':
             return {
@@ -119,7 +169,12 @@ const LoginReducer = (state = initialState, action) => {
                 firstName: state.firstName,
                 lastName: state.lastName,
                 userType: state.userType,
-                venue: state.venue
+                venue: state.venue,
+                venueName: state.venueName,
+                venueLocation: state.venueLocation,
+                artistName: state.artistName,
+                artistLocation: state.artistLocation,
+                artistGenre: state.artistGenre
             };
         case 'CHANGE_FIRST_NAME':
             return {
@@ -130,7 +185,12 @@ const LoginReducer = (state = initialState, action) => {
                 firstName: action.firstName,
                 lastName: state.lastName,
                 userType: state.userType,
-                venue: state.venue
+                venue: state.venue,
+                venueName: state.venueName,
+                venueLocation: state.venueLocation,
+                artistName: state.artistName,
+                artistLocation: state.artistLocation,
+                artistGenre: state.artistGenre
             };
         case 'CHANGE_LAST_NAME':
             return {
@@ -141,7 +201,12 @@ const LoginReducer = (state = initialState, action) => {
                 firstName: state.firstName,
                 lastName: action.lastName,
                 userType: state.userType,
-                venue: state.venue
+                venue: state.venue,
+                venueName: state.venueName,
+                venueLocation: state.venueLocation,
+                artistName: state.artistName,
+                artistLocation: state.artistLocation,
+                artistGenre: state.artistGenre
             };
         case 'CHANGE_USER_TYPE':
             return {
@@ -152,7 +217,92 @@ const LoginReducer = (state = initialState, action) => {
                 firstName: state.firstName,
                 lastName: state.lastName,
                 userType: action.userType,
-                venue: state.venue
+                venue: state.venue,
+                venueName: state.venueName,
+                venueLocation: state.venueLocation,
+                artistName: state.artistName,
+                artistLocation: state.artistLocation,
+                artistGenre: state.artistGenre
+            };
+        case 'CHANGE_VENUE_NAME':
+            return {
+                user: state.user,
+                loggedIn: state.loggedIn,
+                username: state.username,
+                password: state.password,
+                firstName: state.firstName,
+                lastName: state.lastName,
+                userType: state.userType,
+                venue: state.venue,
+                venueName: action.venueName,
+                venueLocation: state.venueLocation,
+                artistName: state.artistName,
+                artistLocation: state.artistLocation,
+                artistGenre: state.artistGenre
+            };
+        case 'CHANGE_VENUE_LOCATION':
+            return {
+                user: state.user,
+                loggedIn: state.loggedIn,
+                username: state.username,
+                password: state.password,
+                firstName: state.firstName,
+                lastName: state.lastName,
+                userType: state.userType,
+                venue: state.venue,
+                venueName: state.venueName,
+                venueLocation: action.venueLocation,
+                artistName: state.artistName,
+                artistLocation: state.artistLocation,
+                artistGenre: state.artistGenre
+            };
+        case 'CHANGE_ARTIST_NAME':
+            return {
+                user: state.user,
+                loggedIn: state.loggedIn,
+                username: state.username,
+                password: state.password,
+                firstName: state.firstName,
+                lastName: state.lastName,
+                userType: state.userType,
+                venue: state.venue,
+                venueName: state.venueName,
+                venueLocation: state.venueLocation,
+                artistName: action.artistName,
+                artistLocation: state.artistLocation,
+                artistGenre: state.artistGenre
+            };
+        case 'CHANGE_ARTIST_LOCATION':
+            return {
+                user: state.user,
+                loggedIn: state.loggedIn,
+                username: state.username,
+                password: state.password,
+                firstName: state.firstName,
+                lastName: state.lastName,
+                userType: state.userType,
+                venue: state.venue,
+                venueName: state.venueName,
+                venueLocation: state.venueLocation,
+                artistName: state.artistName,
+                artistLocation: action.artistLocation,
+                artistGenre: state.artistGenre
+            };
+        case 'CHANGE_ARTIST_GENRE':
+            return {
+                user: state.user,
+                loggedIn: state.loggedIn,
+                username: state.username,
+                password: state.password,
+                firstName: state.firstName,
+                lastName: state.lastName,
+                userType: state.userType,
+                venue: state.venue,
+                venueName: state.venueName,
+                venueLocation: state.venueLocation,
+                artistName: state.artistName,
+                artistLocation: state.artistLocation,
+                artistGenre: action.artistGenre
             };
         case 'LOGIN':
             return {
@@ -163,7 +313,12 @@ const LoginReducer = (state = initialState, action) => {
                 firstName: action.user.firstName,
                 lastName: action.user.lastName,
                 userType: action.user.userType,
-                venue: state.venue
+                venue: state.venue,
+                venueName: state.venueName,
+                venueLocation: state.venueLocation,
+                artistName: state.artistName,
+                artistLocation: state.artistLocation,
+                artistGenre: state.artistGenre
             };
         case 'REGISTER':
             return {
@@ -174,7 +329,12 @@ const LoginReducer = (state = initialState, action) => {
                 firstName: action.user.firstName,
                 lastName: action.user.lastName,
                 userType: action.user.userType,
-                venue: action.user.venue
+                venue: action.user.venue,
+                venueName: state.venueName,
+                venueLocation: state.venueLocation,
+                artistName: state.artistName,
+                artistLocation: state.artistLocation,
+                artistGenre: state.artistGenre
             };
         default:
             return state;
