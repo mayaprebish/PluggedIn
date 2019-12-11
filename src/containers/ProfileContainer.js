@@ -2,9 +2,11 @@ import {connect} from 'react-redux'
 import UserService from "../services/UserService";
 import Profile from "../components/Profile";
 import ArtistService from "../services/ArtistService";
+import VenueService from "../services/VenueService";
 
 const userService = UserService.getInstance();
 const artistService = ArtistService.getInstance();
+const venueService = VenueService.getInstance();
 
 const stateToPropertyMapper = (state) => {
     return {
@@ -15,7 +17,12 @@ const stateToPropertyMapper = (state) => {
         userType: state.userType,
         user: state.user,
         venue: state.venue,
-        loggedIn: state.loggedIn
+        loggedIn: state.loggedIn,
+        venueName: state.venueName,
+        venueLocation: state.venueLocation,
+        artistName: state.artistName,
+        artistLocation: state.artistLocation,
+        artistGenre: state.artistGenre
     }
 };
 
@@ -101,7 +108,42 @@ const dispatcherToPropertyMapper = dispatch => {
                 type: 'CHANGE_USER_TYPE',
                 userType: userType
             })
-        }
+        },
+        changeVenueName: (venueName) => {
+            console.log(venueName);
+            dispatch({
+                type: 'CHANGE_VENUE_NAME',
+                venueName: venueName
+            })
+        },
+        changeVenueLocation: (venueLocation) => {
+            console.log(venueLocation);
+            dispatch({
+                type: 'CHANGE_VENUE_LOCATION',
+                venueLocation: venueLocation
+            })
+        },
+        changeArtistName: (artistName) => {
+            console.log(artistName);
+            dispatch({
+                type: 'CHANGE_ARTIST_NAME',
+                artistName: artistName
+            })
+        },
+        changeArtistLocation: (artistLocation) => {
+            console.log(artistLocation);
+            dispatch({
+                type: 'CHANGE_ARTIST_LOCATION',
+                artistLocation: artistLocation
+            })
+        },
+        changeArtistGenre: (artistGenre) => {
+            console.log(artistGenre);
+            dispatch({
+                type: 'CHANGE_ARTIST_GENRE',
+                artistGenre: artistGenre
+            })
+        },
     }
 };
 
