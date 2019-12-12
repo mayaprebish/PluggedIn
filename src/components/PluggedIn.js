@@ -19,6 +19,8 @@ import SearchDetails from "./SearchDetails";
 import SearchDetailsContainer from "../containers/SearchDetailsContainer";
 import BookingContainer from "../containers/BookingContainer";
 import PublicProfileContainer from "../containers/PublicProfileContainer";
+import VenueDetailsContainer from "../containers/VenueDetailsContainer";
+import ArtistDetailsContainer from "../containers/ArtistDetailsContainer";
 
 const loginStore = createStore(LoginReducer);
 
@@ -46,6 +48,8 @@ export default class PluggedIn extends React.Component {
                             <Route path="/search/:vid" component={SearchDetailsContainer}/>
                             <Route path="/booking/:venueName/:venueKey" component={BookingContainer}/>
                             <Route path="/privacy-policy" component={PrivacyPolicy}/>
+                            <Route path="/venues/:vid" component={VenueDetailsContainer}/>
+                            <Route path="/artists/:aid" component={ArtistDetailsContainer}/>
                         </div>
                     </Provider>
                 </div>

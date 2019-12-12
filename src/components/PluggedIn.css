@@ -26,10 +26,11 @@
 }
 
 .profile-container,
+.profile-content,
+.artist-content,
 .register-container {
     margin-top: 40px;
 }
-
 
 .artist-list,
 .tours-list,

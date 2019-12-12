@@ -12,7 +12,7 @@ export default class UserService {
     }
 
     findUserById = (userId, uType) =>
-        fetch(this.url + `${uType}s` + '/' + `${userId}`, {
+        fetch(this.url + `${uType}` + '/' + `${userId}`, {
             method: 'GET',
             headers: {
                 'content-type': 'application/json',

@@ -31,28 +31,41 @@ export default class PublicProfile extends React.Component {
     }
 
     render() {
-        return(
+        return (
             <div className="public-profile">
 
                 {this.props.loggedIn === false &&
-                    <div className="header">
-                        <LoggedOutHeader/>
-                    </div>
+                <div className="header">
+                    <LoggedOutHeader/>
+                </div>
                 }
 
                 {this.props.loggedIn === true &&
-                    <div className="header">
-                        <LoggedInHeader/>
-                    </div>
+                <div className="header">
+                    <LoggedInHeader/>
+                </div>
                 }
 
                 {this.state.user &&
-                    <div className="container-fluid profile-content">
-                        {this.state.user.firstName}
-                    </div>
+                <div className="container border profile-content">
+                    <h2>{this.state.user.firstName} {this.state.user.lastName}</h2>
+                    <h5>{this.state.user.userType}</h5>
+                </div>
                 }
 
-                hello
+                {this.state.user && this.state.user.userType === "Tour Manager" &&
+                <div className="tm-content container border">
+                    <h3>Artists:</h3>
+                    <ul>
+                        {this.state.user.artists && this.state.user.artists.map(
+                            artist =>
+                                <li className="list-group-item">
+                                    {artist.name}
+                                </li>
+                        )}
+                    </ul>
+                </div>
+                }
 
             </div>
         )

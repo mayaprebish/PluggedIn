@@ -8,7 +8,8 @@ const initialState = {
     user: '',
     venue: '',
     venueName: '',
-    venueLocation: ''
+    venueLocation: '',
+    artist: ''
 };
 
 const LoginReducer = (state = initialState, action) => {
