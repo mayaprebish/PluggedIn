@@ -11,6 +11,19 @@ export default class UserService {
         return this.instance;
     }
 
+    findUserById = (userId, uType) =>
+        fetch(this.url + `${uType}s` + '/' + `${userId}`, {
+            method: 'GET',
+            headers: {
+                'content-type': 'application/json',
+                'Accept': 'application/json',
+                'Access-Control-Allow-Credentials': true,
+                'Access-Control-Allow-Origin': true
+            }
+        })
+            .then(response => response.json())
+            .catch(err => console.log(err));
+
     login = (username, password) => {
         return fetch(this.url + `${username}` + '/' + `${password}`, {
             method: 'GET',
