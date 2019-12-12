@@ -19,8 +19,8 @@ const stateToPropertyMapper = (state) => {
 
 const dispatcherToPropertyMapper = dispatch => {
     return {
-        createBooking: (mid, aid, tid, date) => {
-            userService.createBooking(mid, aid, tid, date)
+        createBooking: (mid, aid, tid, vk, date) => {
+            userService.createBooking(mid, aid, tid, vk, date)
                 .then(user => {
                     dispatch({
                         type: 'ADD_BOOKING',

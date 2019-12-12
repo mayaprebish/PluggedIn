@@ -13,58 +13,12 @@ const initialState = {
 
 const LoginReducer = (state = initialState, action) => {
     switch (action.type) {
+        case 'ADD_TOUR':
+        case 'DELETE_TOUR':
         case 'ADD_ARTIST':
-            return {
-                user: action.user,
-                loggedIn: state.loggedIn,
-                username: state.username,
-                password: state.password,
-                firstName: state.firstName,
-                lastName: state.lastName,
-                userType: state.userType,
-                venue: state.venue,
-                venueName: state.venueName,
-                venueLocation: state.venueLocation
-            };
         case 'DELETE_ARTIST':
-            return {
-                user: action.user,
-                loggedIn: state.loggedIn,
-                username: state.username,
-                password: state.password,
-                firstName: state.firstName,
-                lastName: state.lastName,
-                userType: state.userType,
-                venue: state.venue,
-                venueName: state.venueName,
-                venueLocation: state.venueLocation
-            };
         case 'ADD_VENUE':
-            return {
-                user: action.user,
-                loggedIn: state.loggedIn,
-                username: state.username,
-                password: state.password,
-                firstName: state.firstName,
-                lastName: state.lastName,
-                userType: state.userType,
-                venue: state.venue,
-                venueName: state.venueName,
-                venueLocation: state.venueLocation
-            };
         case 'DELETE_VENUE':
-            return {
-                user: action.user,
-                loggedIn: state.loggedIn,
-                username: state.username,
-                password: state.password,
-                firstName: state.firstName,
-                lastName: state.lastName,
-                userType: state.userType,
-                venue: state.venue,
-                venueName: state.venueName,
-                venueLocation: state.venueLocation
-            };
         case 'ADD_BOOKING':
             return {
                 user: action.user,

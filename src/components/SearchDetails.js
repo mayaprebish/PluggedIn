@@ -85,7 +85,7 @@ export default class SearchDetails extends React.Component {
 
                 {this.props.loggedIn === true && this.props.userType === "Tour Manager" &&
                 <div className="container-fluid wbdv-details">
-                    <Link to="/booking">
+                    <Link to={`/booking/${this.state.venue.name}/${this.state.venue.id}`}>
                         <button className="btn btn-secondary btn-lg add-btn">Book this venue</button>
                     </Link>
                 </div>

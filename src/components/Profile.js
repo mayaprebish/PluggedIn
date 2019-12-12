@@ -11,7 +11,8 @@ export default class Profile extends React.Component {
         this.state = {
             name: '',
             location: '',
-            genre: ''
+            genre: '',
+            tourName: ''
         }
     }
 
@@ -183,7 +184,27 @@ export default class Profile extends React.Component {
                             {this.props.user.tours && this.props.user.tours.length === 0 &&
                             <div className="tours-list">
                                 <li className="list-group-item">
-                                    <h6>Create your first tour!</h6>
+                                    <h6>Add new tour:</h6>
+                                    <form>
+                                        <div className="form-group">
+                                            <input className="form-control" id="tour-name"
+                                                   placeholder="Tour name"
+                                                   aria-describedby="tour-name"
+                                                   onChange={e => {
+                                                       this.setState({
+                                                           tourName: e.currentTarget.value
+                                                       })
+                                                   }}
+                                            />
+                                        </div>
+                                    </form>
+                                    <button className="btn btn-primary"
+                                            onClick={(e) => {
+                                                this.props.addTour(this.props.user.id, this.state.tourName);
+                                                e.preventDefault();
+                                            }}>
+                                        Add to profile
+                                    </button>
                                 </li>
                             </div>
                             }
@@ -194,13 +215,43 @@ export default class Profile extends React.Component {
                                     {this.props.user.tours.map(tour =>
                                         <li className="list-group-item">
                                             <h4>{tour.title}</h4>
+                                            <ul>
+                                            {tour.bookings.map(booking =>
+                                            <li>
+                                                {console.log(booking)}
+                                                <p>{booking.date.substring(0, 10)}</p>
+                                            </li>)}
+                                            </ul>
                                             <br/>
-                                            <button className="btn btn-danger">
-                                                // onClick={}>
+                                            <button className="btn btn-danger"
+                                                    onClick={() => this.props.deleteTour(this.props.user.id, tour.id)}>
                                                 Delete this tour
                                             </button>
 
                                         </li>)}
+                                    <li className="list-group-item">
+                                        <h6>Add new tour:</h6>
+                                        <form>
+                                            <div className="form-group">
+                                                <input className="form-control" id="tour-name"
+                                                       placeholder="Tour name"
+                                                       aria-describedby="tour-name"
+                                                       onChange={e => {
+                                                           this.setState({
+                                                               tourName: e.currentTarget.value
+                                                           })
+                                                       }}
+                                                />
+                                            </div>
+                                        </form>
+                                        <button className="btn btn-primary"
+                                                onClick={(e) => {
+                                                    this.props.addTour(this.props.user.id, this.state.tourName);
+                                                    e.preventDefault();
+                                                }}>
+                                            Add to profile
+                                        </button>
+                                    </li>
                                 </ul>
                             </div>
                             }
@@ -247,6 +298,15 @@ export default class Profile extends React.Component {
                                     <h6>When a Tour Manager makes a Booking at one of your Venues,
                                         it will be listed here!</h6>
                                 </li>
+                            </ul>
+                            }
+
+                            {this.props.user.bookings && this.props.user.bookings.length !== 0 &&
+                            <ul className="list-group venue-list">
+                                {this.props.user.bookings.map(booking =>
+                                <li className="list-group-item">
+                                    {booking.date.substring(0, 10)}
+                                </li>)}
                             </ul>
                             }
 

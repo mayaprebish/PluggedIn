@@ -26,6 +26,24 @@ const stateToPropertyMapper = (state) => {
 
 const dispatcherToPropertyMapper = dispatch => {
     return {
+        addTour: (mid, name) => {
+            userService.createTour(mid, name)
+                .then(user => {
+                    dispatch({
+                        type: 'ADD_TOUR',
+                        user: user
+                    })
+                })
+        },
+        deleteTour: (mid, tid) => {
+            userService.deleteTour(mid, tid)
+                .then(user => {
+                    dispatch({
+                        type: 'DELETE_TOUR',
+                        user: user
+                    })
+                })
+        },
         addArtist: (mid, name, location, genre) => {
             userService.createArtist(mid, name, location, genre)
                 .then(user => {
