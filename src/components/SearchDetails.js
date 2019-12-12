@@ -95,7 +95,7 @@ export default class SearchDetails extends React.Component {
                 <div className="container-fluid wbdv-details">
                     <Link to="/profile"
                     onClick={() => this.props.addVenue(this.props.user.id, this.state.venue.id,
-                        this.state.venue.venue_name, this.state.venue.region)}>
+                        this.state.venue.name, this.state.venue.region)}>
                         <button className="btn btn-secondary btn-lg add-btn">Add this Venue to my Profile</button>
                     </Link>
                 </div>}

@@ -2,15 +2,13 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 import './PluggedIn.css';
-import LoggedOutHeader from "./LoggedOutHeader";
-import LoggedInHeader from "./LoggedInHeader";
 
 export default class Login extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            artist: '',
-            tour: '',
+            artistId: '',
+            tourId: '',
             date: ''
         }
     }
@@ -25,7 +23,7 @@ export default class Login extends React.Component {
                   <div className="form-group">
                       <label htmlFor="venue">Venue</label>
                       <input id="venue" className="form-control" type="text"
-                      placeholder={this.props.location.venue.name} readOnly/>
+                      placeholder={this.props.venue.name} readOnly/>
                   </div>
 
                   <div className="form-group">
@@ -33,11 +31,11 @@ export default class Login extends React.Component {
                       <select id="artist" className="form-control"
                               onChange={e => {
                                   this.setState({
-                                      artist: e.currentTarget.value
+                                      artistId: e.currentTarget.value
                                   })
                               }}>
                      {this.props.location.user.artists.map(artist =>
-                                 <option key={artist.id} value={artist.name}>
+                                 <option key={artist.id} value={artist.id}>
                                      {artist.name}
                                  </option>
                          )}
@@ -53,7 +51,7 @@ export default class Login extends React.Component {
                           })
                       }}>
                           {this.props.location.user.tours.map(tour =>
-                              <option key={tour.id} value={tour.title}>
+                              <option key={tour.id} value={tour.id}>
                                   {tour.title}
                               </option>
                           )}
@@ -70,14 +68,11 @@ export default class Login extends React.Component {
                              }}/>
                   </div>
               </form>
-              <Link to={{
-                  pathname: '/profile',
-                  venue: this.props.location.venue,
-                  artist: this.state.artist,
-                  tour: this.state.tour,
-                  date: this.state.date
-              }}>
-                  <button className="btn btn-primary">
+              <Link to='/profile'>
+                  <button className="btn btn-primary"
+                  onClick={() => this.props.createBooking(
+                      this.props.user.id, this.state.artistId, this.state.tourId, this.state.date
+                  )}>
                   Submit
               </button>
               </Link>

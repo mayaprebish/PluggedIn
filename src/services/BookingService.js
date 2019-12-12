@@ -35,8 +35,6 @@ export default class BookingService {
       fetch(`https://webdev-team-15-server.herokuapp.com/api/bookings/${bookingId}`)
       .then(response => response.json());
 
-
-
     createBookingForOwner = (oid, booking) =>
     fetch(`https://webdev-team-15-server-java.herokuapp.com/api/users/owners/${oid}/bookings`, {
         method: 'POST',

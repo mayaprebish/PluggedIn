@@ -17,6 +17,7 @@ import IndexContainer from "../containers/IndexContainer";
 import SearchContainer from "../containers/SearchContainer";
 import SearchDetails from "./SearchDetails";
 import SearchDetailsContainer from "../containers/SearchDetailsContainer";
+import BookingContainer from "../containers/BookingContainer";
 
 const loginStore = createStore(LoginReducer);
 
@@ -41,7 +42,7 @@ export default class PluggedIn extends React.Component {
                             <Route path="/profile" component={ProfileContainer}/>
                             <Route exact path="/search" component={SearchContainer}/>
                             <Route path="/search/:vid" component={SearchDetailsContainer}/>
-                            <Route path="/booking" component={BookingForm}/>
+                            <Route path="/booking" component={BookingContainer}/>
                             <Route path="/privacy-policy" component={PrivacyPolicy}/>
                         </div>
                     </Provider>

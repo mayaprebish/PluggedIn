@@ -1,6 +1,6 @@
 export default class UserService {
-    url = 'https://webdev-team-15-server.herokuapp.com/api/users/';
-    // url = 'http://localhost:8080/api/users/';
+    // url = 'https://webdev-team-15-server.herokuapp.com/api/users/';
+    url = 'http://localhost:8080/api/users/';
     static instance = null;
 
     static getInstance() {
@@ -12,7 +12,7 @@ export default class UserService {
     }
 
     login = (username, password) => {
-        return fetch(this.url + '/' + `${username}` + '/' + `${password}`, {
+        return fetch(this.url + `${username}` + '/' + `${password}`, {
             method: 'GET',
             headers: {
                 'content-type': 'application/json',
@@ -83,15 +83,29 @@ export default class UserService {
         })
             .then(response => response.json());
 
-    createVenue = (ownerId, name, location) =>
+    createVenue = (ownerId, venueId, name, location) =>
         fetch(this.url + `owners/${ownerId}/venue`, {
             method: 'POST',
             body: JSON.stringify({
-                id: (new Date()).getTime()/1000,
+                stringKey: venueId,
                 name: name,
                 location: location,
-                bookings: [],
-                artists: []
+            }),
+            headers: {
+                'content-type': 'application/json',
+                'Accept': 'application/json',
+                'Access-Control-Allow-Credentials':true,
+                'Access-Control-Allow-Origin':"*",
+                'Access-Control-Allow-Headers': "*"
+            }
+        })
+            .then(response => response.json());
+
+    createBooking = (managerId, artistId, tourId, date) =>
+        fetch(this.url + `managers/${managerId}/tours/${tourId}/artists/${artistId}/booking`, {
+            method: 'POST',
+            body: JSON.stringify({
+                date: date
             }),
             headers: {
                 'content-type': 'application/json',

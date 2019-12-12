@@ -1,8 +1,6 @@
 import {connect} from 'react-redux'
 import UserService from "../services/UserService";
-import Index from "../components/Index";
-import VenueService from "../services/VenueService";
-import SearchDetails from "../components/SearchDetails";
+import BookingForm from "../components/BookingForm";
 
 const userService = UserService.getInstance();
 
@@ -21,12 +19,11 @@ const stateToPropertyMapper = (state) => {
 
 const dispatcherToPropertyMapper = dispatch => {
     return {
-        addVenue: (ownerId, venueId, name, location) => {
-            userService.createVenue(ownerId, venueId, name, location)
+        createBooking: (mid, aid, tid, date) => {
+            userService.createBooking(mid, aid, tid, date)
                 .then(user => {
-                    console.log(user);
                     dispatch({
-                        type: 'ADD_VENUE',
+                        type: 'ADD_BOOKING',
                         user: user
                     })
                 })
@@ -34,8 +31,8 @@ const dispatcherToPropertyMapper = dispatch => {
     }
 };
 
-const SearchDetailsContainer =
+const BookingContainer =
     connect(stateToPropertyMapper,
-        dispatcherToPropertyMapper)(SearchDetails);
+        dispatcherToPropertyMapper)(BookingForm);
 
-export default SearchDetailsContainer;
+export default BookingContainer;

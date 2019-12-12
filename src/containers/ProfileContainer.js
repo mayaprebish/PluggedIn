@@ -1,11 +1,9 @@
 import {connect} from 'react-redux'
 import UserService from "../services/UserService";
 import Profile from "../components/Profile";
-import ArtistService from "../services/ArtistService";
 import VenueService from "../services/VenueService";
 
 const userService = UserService.getInstance();
-const artistService = ArtistService.getInstance();
 const venueService = VenueService.getInstance();
 
 const stateToPropertyMapper = (state) => {
@@ -58,10 +56,9 @@ const dispatcherToPropertyMapper = dispatch => {
                     })
                 })
         },
-        deleteVenue: (oid, vid) => {
-            userService.deleteArtist(oid, vid)
+        deleteVenue: (ownerId, venueId) => {
+            userService.deleteVenue(ownerId, venueId)
                 .then(user => {
-                    console.log(user);
                     dispatch({
                         type: 'DELETE_VENUE',
                         user: user
